@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PontoPlus.Data;
+using PontoPlus.Services;
 
 namespace PontoPlus
 {
@@ -31,6 +32,7 @@ namespace PontoPlus
                 options.UseInMemoryDatabase(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<SeendingService>();
+            services.AddScoped<UsuarioServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

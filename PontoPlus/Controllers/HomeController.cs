@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PontoPlus.Models;
+using PontoPlus.Services;
 
 namespace PontoPlus.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly UsuarioServices _usuarioServices;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(UsuarioServices usuarioServices)
         {
-            _logger = logger;
+            _usuarioServices = usuarioServices;
         }
 
         public IActionResult Login()
@@ -25,6 +26,13 @@ namespace PontoPlus.Controllers
 
         public IActionResult Index()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(Usuario user)
+        {
+            Usuario usuario = _usuarioServices.ValidarLogin(user.Email, user.Senha);
             return View();
         }
 
