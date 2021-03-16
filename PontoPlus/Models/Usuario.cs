@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using PontoPlus.Models.Enums;
 
 namespace PontoPlus.Models
@@ -6,8 +7,18 @@ namespace PontoPlus.Models
     public class Usuario
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "{0} é obrigatório")]
+        [StringLength(80, MinimumLength = 3, ErrorMessage = "{0} o tamanho deve estar entre {2} e {1}")]
         public string Nome { get; set; }
+
+        [Required(ErrorMessage = "{0} é obrigatório")]
+        [EmailAddress(ErrorMessage = "Entre com um email válido")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "{0} é obrigatório")]
+        [StringLength(80, MinimumLength = 5, ErrorMessage = "{0} o tamanho deve estar entre {2} e {1}")]
         public string Senha { get; set; }
         public Departamentos Departamentos { get; set; }
         

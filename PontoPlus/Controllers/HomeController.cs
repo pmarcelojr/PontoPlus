@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PontoPlus.Models;
@@ -32,7 +33,21 @@ namespace PontoPlus.Controllers
         [HttpPost]
         public IActionResult Login(Usuario user)
         {
-            Usuario usuario = _usuarioServices.ValidarLogin(user.Email, user.Senha);
+            if (user.Email != null && user.Senha != null)
+            {
+                Usuario usuario = _usuarioServices.ValidarLogin(user.Email, user.Senha);
+
+                if (usuario == null)
+                {
+                    TempData["ErrorLogin"] = "Email ou Senha são inválidos";
+                    return View();
+                }
+
+                HttpContext.Session.SetString("UserId", usuario.Id.ToString());
+                HttpContext.Session.SetString("UserNome", usuario.Nome);
+                HttpContext.Session.SetString("UserEmail", usuario.Email);
+                return RedirectToAction(nameof(Index));
+            }
             return View();
         }
 
