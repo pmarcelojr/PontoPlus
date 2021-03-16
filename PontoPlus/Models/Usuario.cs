@@ -17,6 +17,20 @@ namespace PontoPlus.Models
         public TimeSpan SaidaPm { get; set; }
 
         public Usuario()
-        { }
+        {           
+        }
+
+        public Usuario(int id, string nome, string email, string senha, Departamentos departamentos, TimeSpan entradaAm, TimeSpan saidaAm, TimeSpan entradaPm, TimeSpan saidaPm)
+        { 
+            Id = id;
+            Nome = nome;
+            Email = email;
+            Senha = senha;
+            Departamentos = departamentos;
+            EntradaAm = entradaAm;
+            SaidaAm = saidaAm;
+            EntradaPm = entradaPm;
+            SaidaPm = saidaPm;
+        }
     }
 }

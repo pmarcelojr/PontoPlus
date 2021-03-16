@@ -1,0 +1,66 @@
+@model PontoPlus.Models.Usuario
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h4>Usuários</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Senha)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Senha)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamentos)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Departamentos)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EntradaAm)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntradaAm)
+        </dd>        
+        <dt>
+            @Html.DisplayNameFor(model => model.SaidaAm)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SaidaAm)
+        </dd>        
+        <dt>
+            @Html.DisplayNameFor(model => model.EntradaPm)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntradaPm)
+        </dd>        
+        <dt>
+            @Html.DisplayNameFor(model => model.SaidaPm)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SaidaPm)
+        </dd>        
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    <a asp-action="Index">Back to List</a>
+</div>
