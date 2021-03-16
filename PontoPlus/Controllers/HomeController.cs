@@ -47,9 +47,16 @@ namespace PontoPlus.Controllers
                 HttpContext.Session.SetString("UserId", usuario.Id.ToString());
                 HttpContext.Session.SetString("UserNome", usuario.Nome);
                 HttpContext.Session.SetString("UserEmail", usuario.Email);
+                HttpContext.Session.SetString("UserDepartamento", usuario.Departamentos.ToString());
                 return RedirectToAction(nameof(Index));
             }
             return View();
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction(nameof(Login));
         }
 
         public IActionResult Privacy()

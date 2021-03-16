@@ -7,9 +7,11 @@ using PontoPlus.Data;
 using PontoPlus.Models;
 using PontoPlus.Models.ViewModels;
 using PontoPlus.Services.Exceptions;
+using PontoPlus.Services.Filters;
 
 namespace PontoPlus.Controllers
 {
+    [AutorizacaoFilter(Departamento = "RH")]
     public class UsuariosController : Controller
     {
         private readonly PontoPlusContext _context;

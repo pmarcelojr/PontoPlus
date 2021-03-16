@@ -27,17 +27,28 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a asp-controller="Home" asp-action="Login">Login </a></li>
-                        <li class="dropdown">
-                            <a asp-controller="Home" asp-action="Login" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> User<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                        </li>
+                        @using Microsoft.AspNetCore.Http
+                        @inject IHttpContextAccessor HttpContextAccessor
+
+                        @{
+                            if (HttpContextAccessor.HttpContext.Session.GetString("UserId") != null)
+                            {
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@HttpContextAccessor.HttpContext.Session.GetString("Username") <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a asp-controller="Home" asp-action="Logout">Sair</a></li>
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li><a asp-controller="Home" asp-action="Login">Login</a></li>
+                            }
+                        }
                     </ul>
                 </div>
             </div>
