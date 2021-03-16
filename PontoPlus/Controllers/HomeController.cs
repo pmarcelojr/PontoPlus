@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PontoPlus.Models;
+using PontoPlus.Models.ViewModels;
 using PontoPlus.Services;
 
 namespace PontoPlus.Controllers

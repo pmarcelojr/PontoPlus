@@ -1,9 +1,12 @@
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PontoPlus.Data;
 using PontoPlus.Models;
+using PontoPlus.Models.ViewModels;
+using PontoPlus.Services.Exceptions;
 
 namespace PontoPlus.Controllers
 {
@@ -86,7 +89,11 @@ namespace PontoPlus.Controllers
                     _context.Update(usuario);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (NotFoundException e)
+                {
+                    return RedirectToAction(nameof(Error), new { message = e.Message });
+                }
+                catch (DbUpdateConcurrencyException e)
                 {
                     if (!UsuarioExists(usuario.Id))
                     {
@@ -94,7 +101,7 @@ namespace PontoPlus.Controllers
                     }
                     else
                     {
-                        throw;
+                        return RedirectToAction(nameof(Error), new { message = e.Message });
                     }
                 };
                 return RedirectToAction(nameof(Index));
@@ -132,6 +139,16 @@ namespace PontoPlus.Controllers
         private bool UsuarioExists(int id)
         {
             return _context.Usuarios.Any(e => e.Id == id);
+        }
+
+        public IActionResult Error(string message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(viewModel);
         }
     }
 }
