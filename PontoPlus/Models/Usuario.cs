@@ -81,12 +81,12 @@ namespace PontoPlus.Models
 
         public int DiasTrabalhados(DateTime initial, DateTime final)
         {
-            return Pontos.Where(pt => pt.Entrada.Date >= initial && pt.Saida.Date <= final).Distinct(new Usuario()).Count();
+            return Pontos.Where(pt => pt.Entrada.Date >= initial && pt.Saida.Date <= final && pt.Entrada.Date <= final).Distinct(new Usuario()).Count();
         }
 
         public TimeSpan TotalHoras(DateTime initial, DateTime final)
         {
-            long ticks = Pontos.Where(x => x.Entrada.Date >= initial && x.Saida.Date <= final).Sum(x => x.TotalTempo.Ticks);
+            long ticks = Pontos.Where(pt => pt.Entrada.Date >= initial && pt.Saida.Date <= final && pt.Saida.Date >= initial).Sum(pt => pt.TotalTempo.Ticks);
             TimeSpan time = new TimeSpan(ticks);
             return time;
         }
