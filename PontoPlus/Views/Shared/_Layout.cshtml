@@ -21,17 +21,20 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Ponto</a>
                         </li>
                         @using PontoPlus.Services.Filters
                         @{
                             if (HttpContextAccessor.HttpContext.Session.GetString("UserDepartamento") == "RH")
                             {
-                                <li>
-                                    <a class="nav-link text-light" asp-controller="Usuarios" asp-action="Index">Usuários</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" asp-controller="Home" asp-action="Index">Departamentos</a>
+                                <li class="dropdown">                                
+                                    <a class="nav-link text-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Funcionários<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <a class="nav-link text-dark" asp-controller="Usuarios" asp-action="Index">Listar Funcionários</a>
+                                        <a class="nav-link text-dark" asp-controller="Usuarios" asp-action="Create">Adicionar Funcionário</a>
+                                        <li role="separator" class="divider"></li>
+                                        <a class="nav-link text-dark" asp-controller="Usuarios" asp-action="Relatorio">Relatório de horas</a>
+                                    </ul>
                                 </li>
                             }
                         }
@@ -50,13 +53,9 @@
                             if (HttpContextAccessor.HttpContext.Session.GetString("UserId") != null)
                             {
                                 <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@HttpContextAccessor.HttpContext.Session.GetString("Username") <span class="caret"></span></a>
+                                    <a class="nav-link text-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@HttpContextAccessor.HttpContext.Session.GetString("Username") <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a asp-controller="Home" asp-action="Logout">Sair</a></li>
+                                        <li><a class="nav-link text-dark" asp-controller="Home" asp-action="Logout">Sair</a></li>
                                     </ul>
                                 </li>
                             }
