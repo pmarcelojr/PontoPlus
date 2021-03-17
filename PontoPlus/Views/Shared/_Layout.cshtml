@@ -7,6 +7,7 @@
     @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-flatly.css">
     <link rel="stylesheet" href="~/css/site.css" />
+    @RenderSection("Css", required: false)
 </head>
 <body>
     <header>
@@ -23,10 +24,10 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="#" asp-action="Index">Funcionários</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Usuarios" asp-action="Index">Funcionários</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="#" asp-action="Index">Departamentos</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Departamentos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -67,7 +68,7 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="container text-center" >
             &copy; 2021 - PontoPlus - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>

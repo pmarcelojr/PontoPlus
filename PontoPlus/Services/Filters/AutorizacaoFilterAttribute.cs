@@ -15,7 +15,7 @@ namespace PontoPlus.Services.Filters
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             object usuarioId = context.HttpContext.Session.GetString("UserId");
-            object usuarioDepartamento = context.HttpContext.Session.GetString("UserDepartmaneto");
+            object usuarioDepartamento = context.HttpContext.Session.GetString("UserDepartamento");
 
             if (usuarioId == null)
             {
