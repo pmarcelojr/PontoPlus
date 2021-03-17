@@ -32,7 +32,9 @@ namespace PontoPlus
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddDbContext<PontoPlusContext>(options =>
-                options.UseInMemoryDatabase(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), builder =>
+                builder.MigrationsAssembly("PontoPlus")));
+                //options.UseInMemoryDatabase(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<SeendingService>();
             services.AddScoped<UsuarioServices>();

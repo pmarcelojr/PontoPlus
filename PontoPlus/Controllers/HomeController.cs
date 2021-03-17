@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using PontoPlus.Models;
 using PontoPlus.Models.ViewModels;
 using PontoPlus.Services;
+using PontoPlus.Services.Filters;
 
 namespace PontoPlus.Controllers
 {
@@ -21,12 +22,23 @@ namespace PontoPlus.Controllers
             _usuarioServices = usuarioServices;
         }
 
-        public IActionResult Login()
+        [AutorizacaoFilter]
+        public IActionResult Index()
         {
-            return View();
+            string id = HttpContext.Session.GetString("UserId");
+            Usuario usuario = _usuarioServices.FindById(int.Parse(id));
+            return View(usuario);
         }
 
-        public IActionResult Index()
+        [HttpPost]
+        [AutorizacaoFilter]
+        [ValidateAntiForgeryToken]
+        public IActionResult  Index(Usuario usuario)
+        {
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Login()
         {
             return View();
         }

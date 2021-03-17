@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using PontoPlus.Models.Enums;
 
@@ -19,13 +20,27 @@ namespace PontoPlus.Models
 
         [Required(ErrorMessage = "{0} é obrigatório")]
         [StringLength(80, MinimumLength = 5, ErrorMessage = "{0} o tamanho deve estar entre {2} e {1}")]
+        [DataType(DataType.Password)]
         public string Senha { get; set; }
         public Departamentos Departamentos { get; set; }
         
+        [DataType(DataType.Time)]
+        [Display(Name = "Entrada 1")]
         public TimeSpan EntradaAm { get; set; }
+
+        [DataType(DataType.Time)]
+        [Display(Name = "Saída 1")]
         public TimeSpan SaidaAm { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [DataType(DataType.Time)]
+        [Display(Name = "Entrada 2")]
         public TimeSpan EntradaPm { get; set; }
+
+        [DataType(DataType.Time)]
+        [Display(Name = "Saída 2")]
         public TimeSpan SaidaPm { get; set; }
+        public ICollection<RegistroPonto> Pontos { get; set; }
 
         public Usuario()
         {           
@@ -42,6 +57,16 @@ namespace PontoPlus.Models
             SaidaAm = saidaAm;
             EntradaPm = entradaPm;
             SaidaPm = saidaPm;
+        }
+
+        public void AddRegistroPonto(RegistroPonto obj)
+        {
+            Pontos.Add(obj);
+        }
+
+        public void RemoveRegistroPonto(RegistroPonto obj)
+        {
+            Pontos.Remove(obj);
         }
     }
 }

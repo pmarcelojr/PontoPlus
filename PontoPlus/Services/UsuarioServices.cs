@@ -29,5 +29,16 @@ namespace PontoPlus.Services
 
             return user;
         }
+
+        public void Insert(Usuario obj)
+        {
+            _context.Add(obj);
+            _context.SaveChanges();
+        }
+
+        public Usuario FindById(int id)
+        {
+            return _context.Usuarios.FirstOrDefault(obj => obj.Id == id);
+        }
     }    
 }

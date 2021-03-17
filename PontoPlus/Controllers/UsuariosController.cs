@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using PontoPlus.Data;
 using PontoPlus.Models;
 using PontoPlus.Models.ViewModels;
+using PontoPlus.Services;
 using PontoPlus.Services.Exceptions;
 using PontoPlus.Services.Filters;
 
@@ -15,9 +16,12 @@ namespace PontoPlus.Controllers
     public class UsuariosController : Controller
     {
         private readonly PontoPlusContext _context;
-        public UsuariosController(PontoPlusContext context)
+        private readonly UsuarioServices _usuarioServices;
+
+        public UsuariosController(PontoPlusContext context, UsuarioServices usuarioServices)
         {
             _context = context;
+            _usuarioServices = usuarioServices;
         }
 
         // GET: Usuarios 
@@ -48,10 +52,11 @@ namespace PontoPlus.Controllers
         }
         // POST: Usuarios/Create
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Email,Senha,Departamento,EntradaAm,SaidaAm,EntradaPm,SaidaPm")] Usuario usuario)
+        public async Task<IActionResult> Create(Usuario usuario)
         {
             if (ModelState.IsValid)
             {
+                //_usuarioServices.Insert(usuario);
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

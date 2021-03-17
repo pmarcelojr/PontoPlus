@@ -10,5 +10,6 @@ namespace PontoPlus.Data
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<RegistroPonto> RegistroPontos { get; set; }
     }
 }
