@@ -52,13 +52,12 @@ namespace PontoPlus.Controllers
                     UsuarioId = int.Parse(HttpContext.Session.GetString("UserId"))
                 };
 
-                TimeSpan teste = ponto.Saida.Subtract(ponto.Entrada);
                 _registroPontoServices.Insert(ponto);
             }
             else
             {
-                TimeSpan teste = ponto.Saida.Subtract(ponto.Entrada);
                 ponto.Saida = DateTime.Now;
+                ponto.TotalTempo = ponto.Saida.Subtract(ponto.Entrada);
                 _registroPontoServices.Update(ponto);
             }
 

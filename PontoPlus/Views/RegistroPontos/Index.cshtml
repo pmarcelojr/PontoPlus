@@ -9,14 +9,17 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th class="text-center">
                 Data
             </th>
-            <th>
+            <th class="text-center">
                 @Html.DisplayNameFor(model => model.Entrada)
             </th>
-            <th>
+            <th class="text-center">
                 @Html.DisplayNameFor(model => model.Saida)
+            </th>
+            <th class="text-center">
+                Total Horas
             </th>
         </tr>
     </thead>
@@ -24,14 +27,35 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td class="text-center">
                     @item.Entrada.ToString("dd/MM/yyyy")
                 </td>
-                <td>
+                <td class="text-center">
                     @item.Entrada.ToString("HH:mm:ss")
                 </td>
-                <td>
-                    @item.Entrada.ToString("HH:mm:ss")
+                <td class="text-center">
+                    @{
+                        if (item.Saida != new DateTime())
+                        {
+                            @item.Saida.ToString("HH:mm:ss")
+                        }
+                        else
+                        {
+                            @("-")
+                        }
+                    }
+                </td>
+                <td class="text-center">
+                    @{
+                        if (item.TotalTempo != new TimeSpan())
+                        {
+                            @item.TotalTempo.ToString("hh\\:mm")
+                        }
+                        else
+                        {
+                            @("-")
+                        }
+                    }
                 </td>
             </tr>
         }

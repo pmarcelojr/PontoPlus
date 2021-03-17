@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PontoPlus.Data;
 
 namespace PontoPlus.Migrations
 {
     [DbContext(typeof(PontoPlusContext))]
-    partial class PontoPlusContextModelSnapshot : ModelSnapshot
+    [Migration("20210317034952_TempoTotal")]
+    partial class TempoTotal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
