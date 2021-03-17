@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,6 +30,23 @@ namespace PontoPlus.Controllers
         {
             return View(await _context.Usuarios.ToListAsync());
         }
+
+        public IActionResult Relatorio(DateTime? minDate, DateTime? maxDate)
+        {
+            if (!minDate.HasValue)
+            {
+                minDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            }
+            if (!maxDate.HasValue)
+            {
+                maxDate = DateTime.Now;
+            }
+            ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
+            ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
+            var users = _usuarioServices.FindAll();
+            return View(users);
+        }
+
         // GET: Usuarios/Details/{id}
         public async Task<IActionResult> Details(int? id)
         {

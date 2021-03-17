@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using PontoPlus.Models.Enums;
 
 namespace PontoPlus.Models
 {
-    public class Usuario
+    public class Usuario : IEqualityComparer<RegistroPonto>
     {
         public int Id { get; set; }
 
@@ -70,6 +72,38 @@ namespace PontoPlus.Models
         public void RemoveRegistroPonto(RegistroPonto obj)
         {
             Pontos.Remove(obj);
+        }
+
+        public TimeSpan CargaHoraria()
+        {
+            return (SaidaAm - EntradaAm + SaidaPm - EntradaPm);
+        }
+
+        public int DiasTrabalhados(DateTime initial, DateTime final)
+        {
+            return Pontos.Where(pt => pt.Entrada.Date >= initial && pt.Saida.Date <= final).Distinct(new Usuario()).Count();
+        }
+
+        public TimeSpan TotalHoras(DateTime initial, DateTime final)
+        {
+            long ticks = Pontos.Where(x => x.Entrada.Date >= initial && x.Saida.Date <= final).Sum(x => x.TotalTempo.Ticks);
+            TimeSpan time = new TimeSpan(ticks);
+            return time;
+        }
+
+        public TimeSpan TotalHorasExtra(DateTime initial, DateTime final)
+        {
+            return TotalHoras(initial, final) - CargaHoraria().Multiply(DiasTrabalhados(initial, final));
+        }
+
+        public bool Equals(RegistroPonto x, RegistroPonto y)
+        {
+            return x.Id == y.Id;
+        }
+
+        public int GetHashCode([DisallowNull] RegistroPonto obj)
+        {
+            return obj.Id;
         }
     }
 }

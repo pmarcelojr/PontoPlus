@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using PontoPlus.Data;
 using PontoPlus.Models;
 
@@ -34,6 +36,11 @@ namespace PontoPlus.Services
         {
             _context.Add(obj);
             _context.SaveChanges();
+        }
+
+        public List<Usuario> FindAll()
+        {
+            return _context.Usuarios.Include(obj => obj.Pontos).ToList();
         }
 
         public Usuario FindById(int id)

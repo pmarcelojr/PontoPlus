@@ -1,0 +1,51 @@
+@model IEnumerable<PontoPlus.Models.Usuario>
+@{
+    ViewData["Title"] = "Relatório de Horas Extras";
+
+    var dateInitial = DateTime.Parse(ViewData["minDate"].ToString());
+    var dateFinal = DateTime.Parse(ViewData["maxDate"].ToString());
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Relatorio" asp-controller="Usuarios" class="form-inline">
+    <div class="row">
+        
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th class="text-center">
+                Total De Horas
+            </th>
+            <th class="text-center">
+                Horas Extras
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Nome
+                </td>
+                <td class="text-center">
+                    @{
+                        var a = item.TotalHoras(dateInitial, dateFinal).ToString("hh\\:mm");
+                        var b = item.TotalHorasExtra(dateInitial, dateFinal).ToString("\\-hh\\:mm");
+                    }
+                    @a
+                </td>
+                <td class="text-center">
+                    @b
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
