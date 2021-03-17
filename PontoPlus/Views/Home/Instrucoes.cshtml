@@ -1,0 +1,34 @@
+@{
+    ViewBag.Title = "Instrucoes";
+}
+
+@section Css{
+    <style>
+        .btn {
+            text-decoration: none;
+        }
+    </style>
+}
+
+<div class="container">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Registro de Jornada de trabalho</h4>
+            </div>
+            <div class="modal-body">
+                <p>Na hora de registrar a jornada de trabalho, faça o que é certo. E ponto.</p>
+                <p>Somos uma organização que se orgulha em atuar de forma íntegra e transparente, sendo cada colaborador responsável em zelar por esses princípios. Por isso, contamos com você para que todo o processo de registro, controle e regularização da jornada de trabalho seja feito de forma correta, garantindo, assim, o direito de todos:</p>
+                <p>- É preciso registrar o início, o intervalo e o fim da jornada. Isso é feito na própria estação de trabalho;</p>
+                <p>- É intolerável iniciar o seu trabalho antes de registrar a entrada no sistema ou marcar o ponto de saída e continuar trabalhando. Além disso, ao registrar a saída, você não deve permanecer no local de trabalho;</p>
+                <p>- O registro da jornada deve ser feito eletronicamente. Na impossibilidade de marcar o ponto, em razão de indisponibilidade no sistema, reuniões ou eventos externos, por exemplo, os acertos manuais deverão refletir a realidade;</p>
+                <p>- O intervalo para almoço e/ou descanso deve ser realizado integralmente e registrado no sistema;</p>
+                <p>- É necessário que você descanse por, no mínimo, 11 horas entre o término da jornada do dia e o início da jornada do dia seguinte.</p>
+                <p>Caso identifique algum tipo de desvio de conduta no registro da jornada de trabalho, denuncie o fato ao Suporte. Esse tipo de falta grave está sujeita ás medidas desciplinares.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><a asp-action="Index">Fechar</a></button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
