@@ -1,4 +1,6 @@
+using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using PontoPlus.Data;
 using PontoPlus.Models;
 
@@ -21,7 +23,21 @@ namespace PontoPlus.Services
 
         public RegistroPonto FindById(int id)
         {
-            return _context.RegistroPontos.FirstOrDefault(obj => obj.Id == id);
+            return _context.RegistroPontos.Include(obj => obj.Usuario).FirstOrDefault(obj => obj.Id == id);
+        }
+
+        public RegistroPonto FindByDayWithoutSaida(DateTime data, Usuario usuario)
+        {
+            return _context.RegistroPontos.Include(obj => obj.Usuario).FirstOrDefault(obj => obj.Entrada.Date == data.Date && obj.Saida == new DateTime() && obj.Usuario == usuario);
+        }
+
+        public void Update(RegistroPonto obj)
+        {
+            if (_context.RegistroPontos.Any(x => x.Id == obj.Id))
+            {
+                _context.Update(obj);
+                _context.SaveChanges();
+            }
         }
     }
 }

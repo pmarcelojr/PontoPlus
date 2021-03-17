@@ -24,19 +24,22 @@ namespace PontoPlus.Models
         public string Senha { get; set; }
         public Departamentos Departamentos { get; set; }
         
+        [Required(ErrorMessage = "{0} é obrigatório")]
         [DataType(DataType.Time)]
         [Display(Name = "Entrada 1")]
         public TimeSpan EntradaAm { get; set; }
 
+        [Required(ErrorMessage = "{0} é obrigatório")]
         [DataType(DataType.Time)]
         [Display(Name = "Saída 1")]
         public TimeSpan SaidaAm { get; set; }
 
-        [Required(AllowEmptyStrings = false)]
+        [Required(ErrorMessage = "{0} é obrigatório")]
         [DataType(DataType.Time)]
         [Display(Name = "Entrada 2")]
         public TimeSpan EntradaPm { get; set; }
 
+        [Required(ErrorMessage = "{0} é obrigatório")]
         [DataType(DataType.Time)]
         [Display(Name = "Saída 2")]
         public TimeSpan SaidaPm { get; set; }

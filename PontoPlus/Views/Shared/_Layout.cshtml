@@ -23,12 +23,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Usuarios" asp-action="Index">Funcionários</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Departamentos</a>
-                        </li>
+                        @using PontoPlus.Services.Filters
+                        @{
+                            if (HttpContextAccessor.HttpContext.Session.GetString("UserDepartamento") == "RH")
+                            {
+                                <li>
+                                    <a class="nav-link text-light" asp-controller="Usuarios" asp-action="Index">Usuários</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-controller="Home" asp-action="Index">Departamentos</a>
+                                </li>
+                            }
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>

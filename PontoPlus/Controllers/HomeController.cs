@@ -16,17 +16,24 @@ namespace PontoPlus.Controllers
     public class HomeController : Controller
     {
         private readonly UsuarioServices _usuarioServices;
+        private readonly RegistroPontoServices _registroPontoServices;
 
-        public HomeController(UsuarioServices usuarioServices)
+        public HomeController(UsuarioServices usuarioServices, RegistroPontoServices registroPontoServices)
         {
             _usuarioServices = usuarioServices;
+            _registroPontoServices = registroPontoServices;
         }
 
         [AutorizacaoFilter]
         public IActionResult Index()
         {
-            string id = HttpContext.Session.GetString("UserId");
-            Usuario usuario = _usuarioServices.FindById(int.Parse(id));
+            int id = int.Parse(HttpContext.Session.GetString("UserId"));
+            Usuario usuario = _usuarioServices.FindById(id);
+            RegistroPonto ponto = _registroPontoServices.FindByDayWithoutSaida(DateTime.Now, _usuarioServices.FindById(id));
+            if (ponto != null)
+            {
+                usuario.AddRegistroPonto(ponto);
+            }
             return View(usuario);
         }
 
@@ -35,6 +42,26 @@ namespace PontoPlus.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult  Index(Usuario usuario)
         {
+            int id = int.Parse(HttpContext.Session.GetString("UserId"));
+            RegistroPonto ponto = _registroPontoServices.FindByDayWithoutSaida(DateTime.Now, _usuarioServices.FindById(id));
+            if (ponto == null)
+            {
+                ponto = new RegistroPonto()
+                {
+                    Entrada = DateTime.Now,
+                    UsuarioId = int.Parse(HttpContext.Session.GetString("UserId"))
+                };
+
+                TimeSpan teste = ponto.Saida.Subtract(ponto.Entrada);
+                _registroPontoServices.Insert(ponto);
+            }
+            else
+            {
+                TimeSpan teste = ponto.Saida.Subtract(ponto.Entrada);
+                ponto.Saida = DateTime.Now;
+                _registroPontoServices.Update(ponto);
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

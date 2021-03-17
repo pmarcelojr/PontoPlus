@@ -71,9 +71,21 @@
                 <li>@Html.DisplayFor(model => model.EntradaPm) - @Html.DisplayFor(model => model.SaidaPm)</li>
             </ul>
         </div>
+        <h1></h1>
         <div class="btn-ponto">
             <form asp-action="Index" asp-controller="Home" method="POST">
-                <input type="submit" name="Ponto" class="btn btn-sucess btn-block" value="Entrar">
+                @{
+                    if (Model.Pontos != null)
+                    {
+                        RegistroPonto ponto = Model.Pontos.FirstOrDefault<RegistroPonto>();
+                        <input type="hidden" name="id" value="@ponto.Id">
+                        <input type="submit" name="Ponto" class="btn btn-sucess btn-block" value="Registrar Saída">
+                    }
+                    else
+                    {
+                        <input type="submit" name="Ponto" class="btn btn-sucess btn-block" value="Registrar Entrada">
+                    }
+                }
             </form>
         </div>
     </div>
