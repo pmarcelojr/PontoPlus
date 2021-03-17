@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using PontoPlus.Data;
@@ -13,6 +14,16 @@ namespace PontoPlus.Services
         public RegistroPontoServices(PontoPlusContext context)
         {
             _context = context;
+        }
+
+        public List<RegistroPonto> FindAll()
+        {
+            return _context.RegistroPontos.ToList();
+        }
+
+        public List<RegistroPonto> FindAll(Usuario user)
+        {
+            return _context.RegistroPontos.Where(x => x.Usuario.Id == user.Id).ToList();
         }
 
         public void Insert(RegistroPonto obj)
