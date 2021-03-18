@@ -4,60 +4,38 @@
     ViewData["Title"] = "Deletar";
 }
 
-<h2>@ViewData["Title"]</h2>
-
-<h3>Você tem certeza que deseja deletar?</h3>
 <div>
-    <h4>Funcionário</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Departamentos)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Departamentos)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.EntradaAm)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EntradaAm)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SaidaAm)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SaidaAm)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.EntradaPm)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EntradaPm)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SaidaPm)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SaidaPm)
-        </dd>
-    </dl>
-
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Deletar" class="btn btn-danger" /> |
-        <a asp-action="Index">Voltar</a>
-    </form>
-</div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Deseja deletar este Funcionário ?</h4>
+            </div>
+            <div class="modal-body">
+                <dl class="dl-horizontal">
+                    <dt>@Html.DisplayNameFor(model => model.Nome)</dt>
+                    <dd>@Html.DisplayFor(model => model.Nome)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+                    <dd>@Html.DisplayFor(model => model.Email)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.Departamentos)</dt>
+                    <dd>@Html.DisplayFor(model => model.Departamentos)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.EntradaAm) / @Html.DisplayNameFor(model => model.SaidaAm)</dt>
+                    <dd>@Html.DisplayFor(model => model.EntradaAm)  / @Html.DisplayFor(model => model.SaidaAm)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.EntradaPm) / @Html.DisplayNameFor(model => model.SaidaPm)</dt>
+                    <dd>@Html.DisplayFor(model => model.EntradaPm)  / @Html.DisplayFor(model => model.SaidaPm)</dd>
+                </dl>
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color">
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="Id" />
+                            <input type="submit" value="Deletar" class="btn btn-danger" />
+                            <button type="button" class="btn btn-info" data-dismiss="modal"><a asp-action="Index">Voltar</a></button>
+                        </form>
+                    </div>
+                }
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->

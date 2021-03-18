@@ -3,63 +3,30 @@
 @{
     ViewData["Title"] = "Detalhes Funcionário";
 }
-
-<h2>@ViewData["Title"]</h2>
-
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Senha)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Senha)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Departamentos)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Departamentos)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.EntradaAm)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EntradaAm)
-        </dd>        
-        <dt>
-            @Html.DisplayNameFor(model => model.SaidaAm)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SaidaAm)
-        </dd>        
-        <dt>
-            @Html.DisplayNameFor(model => model.EntradaPm)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EntradaPm)
-        </dd>        
-        <dt>
-            @Html.DisplayNameFor(model => model.SaidaPm)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SaidaPm)
-        </dd>        
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
-    <a asp-action="Index">Voltar</a>
+<div class="container">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@ViewData["Title"]</h4>
+            </div>
+            <div class="modal-body">
+                <dl class="dl-horizontal">
+                    <dt>@Html.DisplayNameFor(model => model.Nome)</dt>
+                    <dd>@Html.DisplayFor(model => model.Nome)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+                    <dd>@Html.DisplayFor(model => model.Email)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.Departamentos)</dt>
+                    <dd>@Html.DisplayFor(model => model.Departamentos)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.EntradaAm) / @Html.DisplayNameFor(model => model.SaidaAm)</dt>
+                    <dd>@Html.DisplayFor(model => model.EntradaAm)  / @Html.DisplayFor(model => model.SaidaAm)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.EntradaPm) / @Html.DisplayNameFor(model => model.SaidaPm)</dt>
+                    <dd>@Html.DisplayFor(model => model.EntradaPm)  / @Html.DisplayFor(model => model.SaidaPm)</dd>
+                </dl>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal"><a asp-action="Edit" asp-route-id="@Model.Id">Editar</a></button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><a asp-action="Index">Voltar</a></button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div>

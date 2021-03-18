@@ -6,15 +6,30 @@
     var dateFinal = DateTime.Parse(ViewData["maxDate"].ToString());
 }
 
-<h2>@ViewData["Title"]</h2>
+<div>
+    <h2>@ViewData["Title"]</h2>
 
 <form asp-action="Relatorio" asp-controller="Usuarios" class="form-inline">
     <div class="row">
-        
+        <div class="col-sm-offset-5 col-sm-3">
+            <label for="minDate">Data Inicial:</label>
+            <input class="form-control" type="date" id="minDate" name="minDate" value="@ViewData["minDate"]" />
+        </div>
+        <div class="col-sm-3">
+            <label for="maxDate">Data Final: </label>
+            <input class="form-control" type="date" id="maxDate" name="maxDate" value="@ViewData["maxDate"]" />
+
+        </div>
+        <div class="col-sm-1">
+            <input type="submit" name="Pesquisar" value="Pesquisar" class="btn btn-default" />
+
+        </div>
     </div>
 </form>
+</div>
 
-<table class="table">
+
+<table class="table" style="margin-top: 10px;">
     <thead>
         <tr>
             <th>
@@ -30,20 +45,19 @@
     </thead>
     <tbody>
         @foreach (var item in Model)
-        {
+        {   
+            var totalHoras = item.TotalHoras(dateInitial, dateFinal).ToString(@"hh\:mm");
+            var totalHorasExtra = item.TotalHorasExtra(dateInitial, dateFinal);
+
             <tr>
                 <td>
                     @item.Nome
                 </td>
                 <td class="text-center">
-                    @{
-                        var a = item.TotalHoras(dateInitial, dateFinal).ToString("hh\\:mm");
-                        var b = item.TotalHorasExtra(dateInitial, dateFinal).ToString("\\-hh\\:mm");
-                    }
-                    @a
+                    @totalHoras
                 </td>
                 <td class="text-center">
-                    @b
+                    @(((totalHorasExtra < TimeSpan.Zero) ? "-" : "") + totalHorasExtra.ToString(@"hh\:mm"))
                 </td>
             </tr>
         }

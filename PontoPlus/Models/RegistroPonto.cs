@@ -30,5 +30,10 @@ namespace PontoPlus.Models
         {
             return this.Id == other.Id;
         }
+
+        public override int GetHashCode()
+        {
+            return this.Id.GetHashCode();
+        }
     }
 }

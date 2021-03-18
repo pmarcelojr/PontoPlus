@@ -25,6 +25,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Ponto</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-controller="RegistroPontos" asp-action="Index">Espelho de Ponto</a>
+                        </li>
                         @using PontoPlus.Services.Filters
                         @{
                             if (HttpContextAccessor.HttpContext.Session.GetString("UserDepartamento") == "RH")
@@ -41,9 +44,6 @@
                             }
                         }
                         <li class="nav-item">
-                                    <a class="nav-link text-light" asp-controller="RegistroPontos" asp-action="Index">Registros de Pontos</a>
-                                </li>
-                        <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
@@ -55,7 +55,7 @@
                             if (HttpContextAccessor.HttpContext.Session.GetString("UserId") != null)
                             {
                                 <li class="dropdown">
-                                    <a class="nav-link text-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@HttpContextAccessor.HttpContext.Session.GetString("Username") <span class="caret"></span></a>
+                                    <a class="nav-link text-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@HttpContextAccessor.HttpContext.Session.GetString("UserNome") <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a class="nav-link text-dark" asp-controller="Home" asp-action="Logout">Sair</a></li>
                                     </ul>

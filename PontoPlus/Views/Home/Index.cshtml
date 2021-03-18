@@ -28,7 +28,7 @@
     <style>
         .ponto-card {
             width: 450px;
-            margin: 150px auto;
+            margin: 70px auto;
             color: #7a7a7a;
             border-radius: 2px;
             margin-bottom: 15px;
@@ -51,8 +51,18 @@
             margin-right: 0 im !important;
         }
 
-        .btn-ponto {
+        .btn-ponto .btn{
             margin-top: 30px;
+            border-radius: 20px;
+            background: #2C3E50;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .btn-ponto .btn:hover, .btn-ponto .btn:focus {
+            @* background: #50B8B3; *@
+            background: #157ab5;
+            outline: none !important;
         }
     </style>
 }
@@ -67,8 +77,7 @@
         </div>
         <div class="usuario-info">
             <ul class="list-inline text-center">
-                <li>@Html.DisplayFor(model => model.EntradaAm) - @Html.DisplayFor(model => model.SaidaAm)</li>
-                <li>@Html.DisplayFor(model => model.EntradaPm) - @Html.DisplayFor(model => model.SaidaPm)</li>
+                <li>@Html.DisplayFor(model => model.EntradaAm) - @Html.DisplayFor(model => model.SaidaAm)  @Html.DisplayFor(model => model.EntradaPm) - @Html.DisplayFor(model => model.SaidaPm)</li>
             </ul>
         </div>
         <h1></h1>
@@ -79,14 +88,15 @@
                     {
                         RegistroPonto ponto = Model.Pontos.FirstOrDefault<RegistroPonto>();
                         <input type="hidden" name="id" value="@ponto.Id">
-                        <input type="submit" name="Ponto" class="btn btn-sucess btn-block" value="Registrar Saída">
+                        <input type="submit" name="Ponto" class="btn btn-primary btn-lg btn-block" value="Registrar Saída">
                     }
                     else
                     {
-                        <input type="submit" name="Ponto" class="btn btn-sucess btn-block" value="Registrar Entrada">
+                        <input type="submit" name="Ponto" class="btn btn-primary btn-lg btn-block" value="Registrar Entrada">
                     }
                 }
             </form>
+            <a class="Instrucoes" asp-action="Instrucoes">Instruções e regras do ponto</a>
         </div>
     </div>
 </div>
