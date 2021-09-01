@@ -1,4 +1,4 @@
-@model PontoPlus.Models.Usuario
+@model PontoPlus.Manager.Domain.Entities.Usuario
 
 @{
     ViewData["Title"] = "Deletar";
@@ -18,10 +18,12 @@
                     <dd>@Html.DisplayFor(model => model.Email)</dd>
                     <dt>@Html.DisplayNameFor(model => model.Departamentos)</dt>
                     <dd>@Html.DisplayFor(model => model.Departamentos)</dd>
-                    <dt>@Html.DisplayNameFor(model => model.EntradaAm) / @Html.DisplayNameFor(model => model.SaidaAm)</dt>
-                    <dd>@Html.DisplayFor(model => model.EntradaAm)  / @Html.DisplayFor(model => model.SaidaAm)</dd>
-                    <dt>@Html.DisplayNameFor(model => model.EntradaPm) / @Html.DisplayNameFor(model => model.SaidaPm)</dt>
-                    <dd>@Html.DisplayFor(model => model.EntradaPm)  / @Html.DisplayFor(model => model.SaidaPm)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.EntradaAm) / @Html.DisplayNameFor(model => model.SaidaAm)
+                    </dt>
+                    <dd>@Html.DisplayFor(model => model.EntradaAm) / @Html.DisplayFor(model => model.SaidaAm)</dd>
+                    <dt>@Html.DisplayNameFor(model => model.EntradaPm) / @Html.DisplayNameFor(model => model.SaidaPm)
+                    </dt>
+                    <dd>@Html.DisplayFor(model => model.EntradaPm) / @Html.DisplayFor(model => model.SaidaPm)</dd>
                 </dl>
             </div>
             <div class="modal-footer">
@@ -32,7 +34,8 @@
                         <form asp-action="Delete">
                             <input type="hidden" asp-for="Id" />
                             <input type="submit" value="Deletar" class="btn btn-danger" />
-                            <button type="button" class="btn btn-info" data-dismiss="modal"><a asp-action="Index">Voltar</a></button>
+                            <button type="button" class="btn btn-info" data-dismiss="modal"><a
+                                asp-action="Index">Voltar</a></button>
                         </form>
                     </div>
                 }

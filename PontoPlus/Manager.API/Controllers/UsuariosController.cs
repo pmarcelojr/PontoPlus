@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PontoPlus.Data;
-using PontoPlus.Models;
-using PontoPlus.Models.ViewModels;
-using PontoPlus.Services;
-using PontoPlus.Services.Exceptions;
-using PontoPlus.Services.Filters;
+using PontoPlus.Manager.Infra.Data;
+using PontoPlus.Manager.Domain.Entities;
+using PontoPlus.Manager.Core.ViewModels;
+using PontoPlus.Manager.Services.Services;
+using PontoPlus.Manager.Core.Exceptions;
+using PontoPlus.Manager.Services.Filters;
 
 namespace PontoPlus.Controllers
 {

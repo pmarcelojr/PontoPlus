@@ -1,6 +1,6 @@
 using System;
 
-namespace PontoPlus.Models
+namespace PontoPlus.Manager.Domain.Entities
 {
     public class RegistroPonto : IEquatable<RegistroPonto>
     {

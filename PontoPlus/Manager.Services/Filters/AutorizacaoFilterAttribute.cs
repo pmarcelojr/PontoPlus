@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 
-namespace PontoPlus.Services.Filters
+namespace PontoPlus.Manager.Services.Filters
 {
     public class AutorizacaoFilterAttribute : ActionFilterAttribute
     {

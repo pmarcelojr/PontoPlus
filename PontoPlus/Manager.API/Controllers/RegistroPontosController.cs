@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PontoPlus.Models;
-using PontoPlus.Services;
-using PontoPlus.Services.Filters;
+using PontoPlus.Manager.Domain.Entities;
+using PontoPlus.Manager.Services.Services;
+using PontoPlus.Manager.Services.Filters;
 
 namespace PontoPlus.Controllers
 {

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using PontoPlus.Data;
-using PontoPlus.Models;
+using PontoPlus.Manager.Domain.Entities;
+using PontoPlus.Manager.Infra.Data;
 
-namespace PontoPlus.Services
+namespace PontoPlus.Manager.Services.Services
 {
     public class UsuarioServices
     {
@@ -47,5 +47,5 @@ namespace PontoPlus.Services
         {
             return _context.Usuarios.FirstOrDefault(obj => obj.Id == id);
         }
-    }    
+    }
 }

@@ -1,6 +1,6 @@
 using System;
 
-namespace PontoPlus.Services.Exceptions
+namespace PontoPlus.Manager.Core.Exceptions
 {
     public class IntegrityException : ApplicationException
     {

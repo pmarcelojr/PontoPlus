@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using PontoPlus.Models;
-using PontoPlus.Models.ViewModels;
-using PontoPlus.Services;
-using PontoPlus.Services.Filters;
+using PontoPlus.Manager.Domain.Entities;
+using PontoPlus.Manager.Core.ViewModels;
+using PontoPlus.Manager.Services.Services;
+using PontoPlus.Manager.Services.Filters;
 
 namespace PontoPlus.Controllers
 {
@@ -40,7 +40,7 @@ namespace PontoPlus.Controllers
         [HttpPost]
         [AutorizacaoFilter]
         [ValidateAntiForgeryToken]
-        public IActionResult  Index(Usuario usuario)
+        public IActionResult Index(Usuario usuario)
         {
             int id = int.Parse(HttpContext.Session.GetString("UserId"));
             RegistroPonto ponto = _registroPontoServices.FindByDayWithoutSaida(DateTime.Now, _usuarioServices.FindById(id));

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using PontoPlus.Models.Enums;
+using PontoPlus.Manager.Domain.Enums;
 
-namespace PontoPlus.Models
+namespace PontoPlus.Manager.Domain.Entities
 {
     public class Usuario : IEqualityComparer<RegistroPonto>
     {
@@ -25,7 +25,7 @@ namespace PontoPlus.Models
         [DataType(DataType.Password)]
         public string Senha { get; set; }
         public Departamentos Departamentos { get; set; }
-        
+
         [Required(ErrorMessage = "{0} é obrigatório")]
         [DataType(DataType.Time)]
         [Display(Name = "Entrada 1")]
@@ -48,11 +48,11 @@ namespace PontoPlus.Models
         public ICollection<RegistroPonto> Pontos { get; set; }
 
         public Usuario()
-        {           
+        {
         }
 
         public Usuario(int id, string nome, string email, string senha, Departamentos departamentos, TimeSpan entradaAm, TimeSpan saidaAm, TimeSpan entradaPm, TimeSpan saidaPm)
-        { 
+        {
             Id = id;
             Nome = nome;
             Email = email;

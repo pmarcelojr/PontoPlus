@@ -1,16 +1,17 @@
-@model IEnumerable<PontoPlus.Models.Usuario>
+@model IEnumerable<PontoPlus.Manager.Domain.Entities.Usuario>
 
 @{
     ViewData["Title"] = "Funcionários";
 }
 
 @section Css{
-    <style>
-        .btn-new a, .btn-list a {
-            text-decoration: none;
-            color: #2C3E50;
-        }
-    </style>
+<style>
+    .btn-new a,
+    .btn-list a {
+        text-decoration: none;
+        color: #2C3E50;
+    }
+</style>
 }
 
 <h2 class="text-center">@ViewData["Title"]</h2>
@@ -47,7 +48,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model)
+        @foreach (var item in Model)
         {
             <tr>
                 <td>
@@ -72,9 +73,12 @@
                     @Html.DisplayFor(modelItem => item.SaidaPm)
                 </td>
                 <td>
-                    <button class="btn-list btn btn-outline-success details" data-id="@item.Id"><a asp-action="Details" asp-route-id="@item.Id">Detalhes</a></button>
-                    <button class="btn-list btn btn-outline-secondary edit" data-id="@item.Id"><a asp-action="Edit" asp-route-id="@item.Id">Editar</a></button>
-                    <button class="btn-list btn btn-outline-danger delete" data-id="@item.Id"><a asp-action="Delete" asp-route-id="@item.Id">Deletar</a></button>                    
+                    <button class="btn-list btn btn-outline-success details" data-id="@item.Id"><a asp-action="Details"
+                        asp-route-id="@item.Id">Detalhes</a></button>
+                    <button class="btn-list btn btn-outline-secondary edit" data-id="@item.Id"><a asp-action="Edit"
+                        asp-route-id="@item.Id">Editar</a></button>
+                    <button class="btn-list btn btn-outline-danger delete" data-id="@item.Id"><a asp-action="Delete"
+                        asp-route-id="@item.Id">Deletar</a></button>
                 </td>
             </tr>
         }
@@ -83,35 +87,35 @@
 <div id="modal" class="modal fade" role="dialog"></div>
 
 @section scripts{
-    <script>
-        $(function () {
-            $(".details").click(function () {
-                var id = $(this).attr("data-id");
-                $("#modal").load("Details?id=" + id, function () {
-                    $("#modal").modal();
-                })
-            });
+<script>
+    $(function () {
+        $(".details").click(function () {
+            var id = $(this).attr("data-id");
+            $("#modal").load("Details?id=" + id, function () {
+                $("#modal").modal();
+            })
+        });
 
-            $(".edit").click(function () {
-                var id = $(this).attr("data-id");
-                $("#modal").load("Edit?id=" + id, function () {
-                    $("#modal").modal();
-                })
-            });
+        $(".edit").click(function () {
+            var id = $(this).attr("data-id");
+            $("#modal").load("Edit?id=" + id, function () {
+                $("#modal").modal();
+            })
+        });
 
-            $(".delete").click(function () {
-                var id = $(this).attr("data-id");
-                $("#modal").load("Delete?id=" + id, function () {
-                    $("#modal").modal();
-                })
-            });
+        $(".delete").click(function () {
+            var id = $(this).attr("data-id");
+            $("#modal").load("Delete?id=" + id, function () {
+                $("#modal").modal();
+            })
+        });
 
-           $(".create").click(function () {
-                $("#modal").load("Create", function () {
-                    $("#modal").modal();
-                })
-            });
+        $(".create").click(function () {
+            $("#modal").load("Create", function () {
+                $("#modal").modal();
+            })
+        });
 
-        })
-    </script>
+    })
+</script>
 }

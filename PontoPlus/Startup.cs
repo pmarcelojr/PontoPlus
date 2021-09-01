@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PontoPlus.Data;
-using PontoPlus.Services;
+using PontoPlus.Manager.Infra.Data;
+using PontoPlus.Manager.Services.Services;
 
 namespace PontoPlus
 {
@@ -34,7 +34,7 @@ namespace PontoPlus
             services.AddDbContext<PontoPlusContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), builder =>
                 builder.MigrationsAssembly("PontoPlus")));
-                //options.UseInMemoryDatabase(Configuration.GetConnectionString("DefaultConnection")));
+            //options.UseInMemoryDatabase(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<SeendingService>();
             services.AddScoped<UsuarioServices>();
@@ -54,6 +54,7 @@ namespace PontoPlus
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+                seendingService.Seed();
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();

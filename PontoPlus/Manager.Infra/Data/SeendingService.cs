@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
-using PontoPlus.Models;
-using PontoPlus.Models.Enums;
+using PontoPlus.Manager.Domain.Entities;
+using PontoPlus.Manager.Domain.Enums;
 
-namespace PontoPlus.Data
+namespace PontoPlus.Manager.Infra.Data
 {
     public class SeendingService
     {

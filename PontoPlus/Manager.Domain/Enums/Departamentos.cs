@@ -1,4 +1,4 @@
-namespace PontoPlus.Models.Enums
+namespace PontoPlus.Manager.Domain.Enums
 {
     public enum Departamentos
     {

@@ -1,4 +1,4 @@
-@model IEnumerable<PontoPlus.Models.Usuario>
+@model IEnumerable<PontoPlus.Manager.Domain.Entities.Usuario>
 @{
     ViewData["Title"] = "Relatório de Horas Extras";
 
@@ -9,23 +9,23 @@
 <div>
     <h2>@ViewData["Title"]</h2>
 
-<form asp-action="Relatorio" asp-controller="Usuarios" class="form-inline">
-    <div class="row">
-        <div class="col-sm-offset-5 col-sm-3">
-            <label for="minDate">Data Inicial:</label>
-            <input class="form-control" type="date" id="minDate" name="minDate" value="@ViewData["minDate"]" />
-        </div>
-        <div class="col-sm-3">
-            <label for="maxDate">Data Final: </label>
-            <input class="form-control" type="date" id="maxDate" name="maxDate" value="@ViewData["maxDate"]" />
+    <form asp-action="Relatorio" asp-controller="Usuarios" class="form-inline">
+        <div class="row">
+            <div class="col-sm-offset-5 col-sm-3">
+                <label for="minDate">Data Inicial:</label>
+                <input class="form-control" type="date" id="minDate" name="minDate" value="@ViewData["minDate"]" />
+            </div>
+            <div class="col-sm-3">
+                <label for="maxDate">Data Final: </label>
+                <input class="form-control" type="date" id="maxDate" name="maxDate" value="@ViewData["maxDate"]" />
 
-        </div>
-        <div class="col-sm-1">
-            <input type="submit" name="Pesquisar" value="Pesquisar" class="btn btn-default" />
+            </div>
+            <div class="col-sm-1">
+                <input type="submit" name="Pesquisar" value="Pesquisar" class="btn btn-default" />
 
+            </div>
         </div>
-    </div>
-</form>
+    </form>
 </div>
 
 
@@ -45,7 +45,7 @@
     </thead>
     <tbody>
         @foreach (var item in Model)
-        {   
+        {
             var totalHoras = item.TotalHoras(dateInitial, dateFinal).ToString(@"hh\:mm");
             var totalHorasExtra = item.TotalHorasExtra(dateInitial, dateFinal);
 
