@@ -102,6 +102,11 @@ namespace PontoPlus.Controllers
             return View();
         }
 
+        public IActionResult Forget()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

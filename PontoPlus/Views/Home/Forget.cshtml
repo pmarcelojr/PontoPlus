@@ -1,7 +1,7 @@
 @model Usuario
 
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Recuperar minha senha";
 }
 
 @section Css{
@@ -143,26 +143,17 @@
             {
             }
         }
+        <div>
+            <h4 style="text-align: center;">Esqueceu a senha?</h4>
+            <p>Não tem problema! Só precisamos do email que você usou ao criar seu cadastro.</p>
+        </div>
         <div class="form-group">
             <input type="email" class="form-control" asp-for="Email" placeholder="Email">
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" asp-for="Senha" placeholder="Senha">
-            <span asp-validation-for="Senha" class="text-danger"></span>
-        </div>
-        <div class="checkbox">
-            <label class="pull-left checkbox-inline" style="margin-right: 100px;">
-                <input type="checkbox" value="" checked> Lembrar-me</label>
-
-            <a asp-action="Forget" class="pull-right">Esqueceu a senha</a>
-        </div>
-        <div class="form-group">
             <button type="submit" class="btn btn-primary btn-lg btn-block">
-                <span class="glyphicon glyphicon-off"></span> Entrar</button>
-        </div>
-        <div class="clearfix" style="margin-left: 50px;">
-            <p>Ainda não tem conta? <a asp-action="Register" class="pull-right"> Cadastre-se</a></p>
+                <span class="glyphicon glyphicon-off"></span> Enviar</button>
         </div>
     </form>
 </div>
