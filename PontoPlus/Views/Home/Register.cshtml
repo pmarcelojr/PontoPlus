@@ -1,7 +1,7 @@
 @model Usuario
 
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Register";
 }
 
 @section Css{
@@ -121,6 +121,14 @@
     .login-form form a:hover {
         text-decoration: underline;
     }
+
+    .btn-block {
+        width: 49%;
+    }
+
+    .btn-exclude {
+        float: left;
+    }
 </style>
 }
 
@@ -144,6 +152,10 @@
             }
         }
         <div class="form-group">
+            <input type="text" class="form-control" asp-for="Nome" placeholder="Nome">
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+        <div class="form-group">
             <input type="email" class="form-control" asp-for="Email" placeholder="Email">
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
@@ -151,18 +163,12 @@
             <input type="password" class="form-control" asp-for="Senha" placeholder="Senha">
             <span asp-validation-for="Senha" class="text-danger"></span>
         </div>
-        <div class="checkbox">
-            <label class="pull-left checkbox-inline" style="margin-right: 100px;">
-                <input type="checkbox" value="" checked> Lembrar-me</label>
-
-            <a href="#" class="pull-right">Esqueceu a senha</a>
-        </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg btn-block">
+            <button type="submit" class="btn btn-primary btn-lg btn-block btn-exclude" style="margin-right: 5px;">
+                <span class="glyphicon glyphicon-off"></span> Inscrever-se</button>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-left: 5px;">
                 <span class="glyphicon glyphicon-off"></span> Entrar</button>
-        </div>
-        <div class="clearfix" style="margin-left: 50px;">
-            <p>Ainda não tem conta? <a asp-action="Register" class="pull-right"> Cadastre-se</a></p>
         </div>
     </form>
 </div>
