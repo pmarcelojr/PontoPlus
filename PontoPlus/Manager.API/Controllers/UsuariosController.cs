@@ -10,6 +10,7 @@ using PontoPlus.Manager.Core.ViewModels;
 using PontoPlus.Manager.Services.Services;
 using PontoPlus.Manager.Core.Exceptions;
 using PontoPlus.Manager.Services.Filters;
+using System.Data;
 
 namespace PontoPlus.Controllers
 {
@@ -72,12 +73,19 @@ namespace PontoPlus.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Usuario usuario)
         {
-            if (ModelState.IsValid)
+            try
             {
-                //_usuarioServices.Insert(usuario);
-                _context.Add(usuario);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    //_usuarioServices.Insert(usuario);
+                    _context.Add(usuario);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again.");
             }
             return View(usuario);
         }
