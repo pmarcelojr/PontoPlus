@@ -3,23 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using PontoPlus.Manager.Core.Exceptions;
 using PontoPlus.Manager.Domain.Enums;
+using PontoPlus.Manager.Domain.Validators;
 
 namespace PontoPlus.Manager.Domain.Entities
 {
     public class Usuario : Base, IEqualityComparer<RegistroPonto>
     {
-        [Required(ErrorMessage = "{0} é obrigatório")]
-        [StringLength(80, MinimumLength = 3, ErrorMessage = "{0} o tamanho deve estar entre {2} e {1}")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "{0} é obrigatório")]
-        [EmailAddress(ErrorMessage = "Entre com um email válido")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "{0} é obrigatório")]
-        [StringLength(80, MinimumLength = 5, ErrorMessage = "{0} o tamanho deve estar entre {2} e {1}")]
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
@@ -57,6 +53,9 @@ namespace PontoPlus.Manager.Domain.Entities
             SaidaAm = saidaAm;
             EntradaPm = entradaPm;
             SaidaPm = saidaPm;
+            _errors = new List<string>();
+
+            Validate();
         }
 
         public void AddRegistroPonto(RegistroPonto obj)
@@ -103,7 +102,18 @@ namespace PontoPlus.Manager.Domain.Entities
 
         public override bool Validate()
         {
-            throw new NotImplementedException();
+            var validator = new UsuarioValidator();
+            var validation = validator.Validate(this);
+
+            if (!validation.IsValid)
+            {
+                foreach (var error in validation.Errors)
+                    _errors.Add(error.ErrorMessage);
+
+                throw new DomainException("Alguns campos estão inválidos, por favor corrija-os", _errors);
+            }
+
+            return true;
         }
     }
 }

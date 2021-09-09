@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace PontoPlus.Manager.Domain.Entities
 {
@@ -23,6 +24,7 @@ namespace PontoPlus.Manager.Domain.Entities
             Saida = saida;
             Usuario = usuario;
             TotalTempo = totalTempo;
+            _errors = new List<string>();
         }
 
         public bool Equals(RegistroPonto other)
