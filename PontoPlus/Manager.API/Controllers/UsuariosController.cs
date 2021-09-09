@@ -64,7 +64,7 @@ namespace PontoPlus.Controllers
             return View(usuario);
         }
         // GET: Usuarios/Create
-        public IActionResult Create()
+        public IActionResult ViewCreate()
         {
             return View();
         }
@@ -72,7 +72,25 @@ namespace PontoPlus.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Usuario usuario)
         {
+<<<<<<< HEAD
             if (ModelState.IsValid)
+=======
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    //_usuarioServices.Insert(usuario);
+                    _context.Add(usuario);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    Console.WriteLine("Falso");
+                }
+            }
+            catch (DataException)
+>>>>>>> hotfix
             {
                 //_usuarioServices.Insert(usuario);
                 _context.Add(usuario);
