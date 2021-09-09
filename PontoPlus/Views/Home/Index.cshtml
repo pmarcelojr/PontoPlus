@@ -4,6 +4,7 @@
     ViewData["Title"] = "Ponto Eletrônico";
 }
 
+// Time Ponto Eletrônico -- //Views/Home/Index.cshtml
 @section scripts{
 <script language="JavaScript">
     function myTime() {
@@ -16,7 +17,6 @@
         }
         document.getElementById("clock").innerHTML = displayDate;
     }
-
     $().ready(function () {
         myTime();
         var myVar = setInterval(myTime, 1000);
