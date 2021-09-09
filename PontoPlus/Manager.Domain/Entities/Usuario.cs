@@ -7,10 +7,8 @@ using PontoPlus.Manager.Domain.Enums;
 
 namespace PontoPlus.Manager.Domain.Entities
 {
-    public class Usuario : IEqualityComparer<RegistroPonto>
+    public class Usuario : Base, IEqualityComparer<RegistroPonto>
     {
-        public int Id { get; set; }
-
         [Required(ErrorMessage = "{0} é obrigatório")]
         [StringLength(80, MinimumLength = 3, ErrorMessage = "{0} o tamanho deve estar entre {2} e {1}")]
         public string Nome { get; set; }
@@ -24,6 +22,7 @@ namespace PontoPlus.Manager.Domain.Entities
         [StringLength(80, MinimumLength = 5, ErrorMessage = "{0} o tamanho deve estar entre {2} e {1}")]
         [DataType(DataType.Password)]
         public string Senha { get; set; }
+
         public Departamentos Departamentos { get; set; }
 
         [DataType(DataType.Time)]
@@ -100,6 +99,11 @@ namespace PontoPlus.Manager.Domain.Entities
         public int GetHashCode([DisallowNull] RegistroPonto obj)
         {
             return obj.Id;
+        }
+
+        public override bool Validate()
+        {
+            throw new NotImplementedException();
         }
     }
 }

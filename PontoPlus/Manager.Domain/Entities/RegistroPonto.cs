@@ -2,9 +2,8 @@ using System;
 
 namespace PontoPlus.Manager.Domain.Entities
 {
-    public class RegistroPonto : IEquatable<RegistroPonto>
+    public class RegistroPonto : Base, IEquatable<RegistroPonto>
     {
-        public int Id { get; set; }
         public DateTime Entrada { get; set; }
         public DateTime Saida { get; set; }
 
@@ -34,6 +33,11 @@ namespace PontoPlus.Manager.Domain.Entities
         public override int GetHashCode()
         {
             return this.Id.GetHashCode();
+        }
+
+        public override bool Validate()
+        {
+            throw new NotImplementedException();
         }
     }
 }
