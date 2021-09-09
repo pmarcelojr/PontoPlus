@@ -10,6 +10,7 @@ using PontoPlus.Manager.Core.ViewModels;
 using PontoPlus.Manager.Services.Services;
 using PontoPlus.Manager.Core.Exceptions;
 using PontoPlus.Manager.Services.Filters;
+using System.Data;
 
 namespace PontoPlus.Controllers
 {
@@ -72,9 +73,6 @@ namespace PontoPlus.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Usuario usuario)
         {
-<<<<<<< HEAD
-            if (ModelState.IsValid)
-=======
             try
             {
                 if (ModelState.IsValid)
@@ -90,7 +88,6 @@ namespace PontoPlus.Controllers
                 }
             }
             catch (DataException)
->>>>>>> hotfix
             {
                 //_usuarioServices.Insert(usuario);
                 _context.Add(usuario);
