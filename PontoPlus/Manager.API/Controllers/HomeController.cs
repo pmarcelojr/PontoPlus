@@ -97,6 +97,16 @@ namespace PontoPlus.Controllers
             return RedirectToAction(nameof(Login));
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        public IActionResult Forget()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

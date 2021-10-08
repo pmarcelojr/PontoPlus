@@ -10,6 +10,7 @@ using PontoPlus.Manager.Core.ViewModels;
 using PontoPlus.Manager.Services.Services;
 using PontoPlus.Manager.Core.Exceptions;
 using PontoPlus.Manager.Services.Filters;
+using System.Data;
 
 namespace PontoPlus.Controllers
 {
@@ -64,7 +65,7 @@ namespace PontoPlus.Controllers
             return View(usuario);
         }
         // GET: Usuarios/Create
-        public IActionResult Create()
+        public IActionResult ViewCreate()
         {
             return View();
         }
@@ -72,7 +73,21 @@ namespace PontoPlus.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Usuario usuario)
         {
-            if (ModelState.IsValid)
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    //_usuarioServices.Insert(usuario);
+                    _context.Add(usuario);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    Console.WriteLine("Falso");
+                }
+            }
+            catch (DataException)
             {
                 //_usuarioServices.Insert(usuario);
                 _context.Add(usuario);

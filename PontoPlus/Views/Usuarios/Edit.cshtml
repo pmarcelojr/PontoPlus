@@ -9,13 +9,13 @@
     <div class="modal-content">
         @using (Html.BeginForm())
         {
-            <div class="modal-header">
-                <h4 class="modal-title">@ViewData["Title"]</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-8">
-                        <form asp-action="Edit">
+            <form asp-action="Edit">
+                <div class="modal-header">
+                    <h4 class="modal-title">@ViewData["Title"]</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input type="hidden" asp-for="Id" />
                             <div class="form-group row">
@@ -76,15 +76,15 @@
                                     <span asp-validation-for="SaidaPm" class="text-danger"></span>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <input type="submit" value="Salvar" class="btn btn-success" />
-                <button type="button" class="btn btn-danger" data-dismiss="modal"><a
-                    style="color: white; text-decoration: none" asp-action="Index">Voltar</a></button>
-            </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Salvar" class="btn btn-success" />
+                    <button type="button" class="btn btn-info" data-dismiss="modal"><a
+                        style="color: white; text-decoration: none" asp-action="Index">Voltar</a></button>
+                </div>
+            </form>
         }
     </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->

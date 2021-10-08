@@ -27,12 +27,13 @@ namespace PontoPlus
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var config = Configuration.GetConnectionString("DefaultConnection");
             services.AddControllersWithViews();
             services.AddSession();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddDbContext<PontoPlusContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), builder =>
+                options.UseMySql(config, builder =>
                 builder.MigrationsAssembly("PontoPlus")));
             //options.UseInMemoryDatabase(Configuration.GetConnectionString("DefaultConnection")));
 
