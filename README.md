@@ -2,14 +2,14 @@
 
 # Requisitos
 ## 1. Instalar dotnet ef:
-Para instalar o dotnet ef local, execute as seguintes instruções:
+Para instalar o dotnet ef local, execute as seguintes instruï¿½ï¿½es:
 ```
 dotnet new tool-manifest 
 dotnet tool install --local dotnet-ef --version 5.0.5
 ```
 
 # Banco de dados
-## 1. Criar instância do MySQL 8 (Docker)
+## 1. Criar instï¿½ncia do MySQL 8 (Docker)
 ```
 docker run --name PontoPlus_DB -e MYSQL_DATABASE=PontoPlus -e MYSQL_ROOT_PASSWORD="123456" -p 3306:3306 -d mysql:8
 ```
@@ -23,8 +23,12 @@ dotnet ef database update FirstMigration
 ```
 
 ## 4. Rodar o projeto 
+### 4.1 Iniciar
 ```
 dotnet run
 ```
+
+### 4.2 Iniciar com watch
+dotnet watch run
 
 ![](/PontoPlus/wwwroot/images/logo1.png)
