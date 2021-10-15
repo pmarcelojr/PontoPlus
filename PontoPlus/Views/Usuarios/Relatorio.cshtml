@@ -6,26 +6,18 @@
     var dateFinal = DateTime.Parse(ViewData["maxDate"].ToString());
 }
 
+@section Css{
+<style>
+    .btn-new a,
+    .btn-list a {
+        text-decoration: none;
+        color: #2C3E50;
+    }
+</style>
+}
+
 <div>
-    <h2>@ViewData["Title"]</h2>
-
-    <form asp-action="Relatorio" asp-controller="Usuarios" class="form-inline">
-        <div class="row">
-            <div class="col-sm-offset-5 col-sm-3">
-                <label for="minDate">Data Inicial:</label>
-                <input class="form-control" type="date" id="minDate" name="minDate" value="@ViewData["minDate"]" />
-            </div>
-            <div class="col-sm-3">
-                <label for="maxDate">Data Final: </label>
-                <input class="form-control" type="date" id="maxDate" name="maxDate" value="@ViewData["maxDate"]" />
-
-            </div>
-            <div class="col-sm-1">
-                <input type="submit" name="Pesquisar" value="Pesquisar" class="btn btn-default" />
-
-            </div>
-        </div>
-    </form>
+    <h2 class="text-center">@ViewData["Title"]</h2>
 </div>
 
 
@@ -33,7 +25,8 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @* @Html.DisplayNameFor(model => model.Nome) *@
+                Funcionário
             </th>
             <th class="text-center">
                 Total De Horas
@@ -41,6 +34,7 @@
             <th class="text-center">
                 Horas Extras
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -58,6 +52,10 @@
                 </td>
                 <td class="text-center">
                     @(((totalHorasExtra < TimeSpan.Zero) ? "-" : "") + totalHorasExtra.ToString(@"hh\:mm"))
+                </td>
+                <td>
+                    <button type="button" class="btn-list btn btn-outline-secondary" style="display: block; margin: auto"><a
+                        asp-action="Home">Imprimir</a></button>
                 </td>
             </tr>
         }
