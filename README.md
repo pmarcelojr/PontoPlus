@@ -22,7 +22,24 @@ dotnet ef migrations add FirstMigration
 dotnet ef database update FirstMigration
 ```
 
-## 4. Rodar o projeto 
+## 4. Configurar Aplicação
+### 4.1. Adicionando o User Secrets
+Executar o comando 
+```
+dotnet user-secrets set "dummy" "1234"
+```
+
+Procurar navegar até ```%appdata%/Microsoft/UserSecrets``` e procurar a pasta com o um nome UUID aleatório gerado pelo sistema.
+Entre na pasta e edite o arquivo ```secrets.json```, adicionando o seguinte conteúdo:
+```
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "server=localhost; port=3306; database=PontoPlus; user=root; password=123456; Persist Security Info=False; Connect Timeout=300"
+  }
+}
+```
+
+
 ### 4.1 Iniciar
 ```
 dotnet run
