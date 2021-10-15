@@ -89,15 +89,20 @@
                     {
                         RegistroPonto ponto = Model.Pontos.FirstOrDefault<RegistroPonto>();
                         <input type="hidden" name="id" value="@ponto.Id">
-                        <input type="submit" name="Ponto" class="btn btn-primary btn-lg btn-block" value="Registrar Saída">
+                        <button type="submit" name="Ponto" class="btn btn-primary btn-lg btn-block">Registrar Saída</button>
+                        //<input type="submit" name="Ponto" class="btn btn-primary btn-lg btn-block" value="Registrar Saída">
                     }
                     else
                     {
-                        <input type="submit" name="Ponto" class="btn btn-primary btn-lg btn-block" value="Registrar Entrada">
+                        <button type="submit" name="Ponto" class="btn btn-primary btn-lg btn-block">Registrar Entrada</button>
+                        // <input type="submit" name="Ponto" class="btn btn-primary btn-lg btn-block" value="Registrar Entrada">
                     }
                 }
             </form>
-            <a class="Instrucoes" asp-action="Instrucoes">Instruções e regras do ponto</a>
+            <a class="Instrucoes" asp-action="Instrucoes"
+                style="text-decoration: none; color: #2c3E50; text-align: right">Instruções e
+                regras do
+                ponto</a>
         </div>
     </div>
 </div>

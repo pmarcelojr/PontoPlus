@@ -1,10 +1,13 @@
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/pmarcelojr/PontoPlus/blob/main/LICENSE)
+![](/PontoPlus/wwwroot/images/logo1.png)
 
 # 1. Requisitos
 ## 1.1. Instalar dotnet ef:
+
 Para instalar o dotnet ef local, execute as seguintes instruções:
+
 ```
-dotnet new tool-manifest 
+dotnet new tool-manifest
 dotnet tool install --local dotnet-ef --version 5.0.5
 ```
 
@@ -34,8 +37,9 @@ dotnet user-secret init
 dotnet user-secrets set "dummy" "1234"
 ```
 
-Procurar navegar até ```%appdata%/Microsoft/UserSecrets``` e procurar a pasta com o um nome UUID aleatório gerado pelo sistema.
-Entre na pasta e edite o arquivo ```secrets.json```, adicionando o seguinte conteúdo:
+Procurar navegar até `%appdata%/Microsoft/UserSecrets` e procurar a pasta com o um nome UUID aleatório gerado pelo sistema.
+Entre na pasta e edite o arquivo `secrets.json`, adicionando o seguinte conteúdo:
+
 ```
 {
   "ConnectionStrings": {
@@ -52,5 +56,12 @@ dotnet run
 
 ### 4.1. Iniciar com watch
 dotnet watch run
+```
 
-![](/PontoPlus/wwwroot/images/logo1.png)
+## Contributing
+
+Solicitações Pull Request são bem-vindas. Para mudanças importantes, abra um problema primeiro para discutir o que você gostaria de mudar.
+
+## _License_
+
+[MIT](https://choosealicense.com/licenses/mit/)
