@@ -2,18 +2,11 @@
 
 ![](/PontoPlus/wwwroot/images/logo1.png)
 
-# _Requisitos_
+# Requisitos
 
 ## 1. Instalar dotnet ef:
 
-<<<<<<< HEAD
-
-Para instalar o dotnet ef local, execute as seguintes instru��es:
-
-=======
 Para instalar o dotnet ef local, execute as seguintes instruções:
-
-> > > > > > > b7f59d8b9b3ba184dec29332980c959cc9895ef6
 
 ```
 dotnet new tool-manifest
@@ -22,15 +15,7 @@ dotnet tool install --local dotnet-ef --version 5.0.5
 
 # Banco de dados
 
-<<<<<<< HEAD
-
-## 1. Criar inst�ncia do MySQL 8 (Docker)
-
-=======
-
 ## 1. Criar instância do MySQL 8 (Docker)
-
-> > > > > > > b7f59d8b9b3ba184dec29332980c959cc9895ef6
 
 ```
 docker run --name PontoPlus_DB -e MYSQL_DATABASE=PontoPlus -e MYSQL_ROOT_PASSWORD="123456" -p 3306:3306 -d mysql:8
