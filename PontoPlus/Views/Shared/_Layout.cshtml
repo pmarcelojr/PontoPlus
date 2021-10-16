@@ -8,6 +8,7 @@
     @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-flatly.css">
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/chat.css" />
     @RenderSection("Css", required: false)
 </head>
 <body>
@@ -36,7 +37,7 @@
                                 @{
                                     if (HttpContextAccessor.HttpContext.Session.GetString("UserDepartamento") == "RH")
                                     {
-                                        <li class="dropdown">                                
+                                        <li class="dropdown">
                                             <a class="nav-link text-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Funcionários<span class="caret"></span></a>
                                             <ul class="dropdown-menu">
                                                 <a class="nav-link text-dark" asp-controller="Usuarios" asp-action="Index">Listar Funcionários</a>
@@ -54,7 +55,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 @using Microsoft.AspNetCore.Http
                                 @inject IHttpContextAccessor HttpContextAccessor
-                                
+
                                 @{
                                     if (HttpContextAccessor.HttpContext.Session.GetString("UserId") != null)
                                     {
@@ -77,7 +78,7 @@
             </header>
         }
     }
-    
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -92,6 +93,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/chat.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -28,7 +28,10 @@ namespace PontoPlus
         public void ConfigureServices(IServiceCollection services)
         {
             var config = Configuration.GetConnectionString("DefaultConnection");
-            services.AddControllersWithViews();
+            
+            services.AddControllersWithViews()
+                .AddRazorRuntimeCompilation();
+
             services.AddSession();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

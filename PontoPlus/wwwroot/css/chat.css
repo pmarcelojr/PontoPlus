@@ -1,0 +1,81 @@
+﻿.chat-box {
+    width: 280px;
+    height: 500px;
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,.3);
+    margin-left: 63%;
+    position: absolute;
+    bottom: 0;
+    background: white;
+    z-index: 1000 !important;
+    border-radius: 10px 10px 0px 0px;
+    transition: .5s;
+}
+
+.chat-closed {
+    height: 50px;
+    transition: .5s;
+}
+
+.chat-header {
+    width: 100%;
+    background: #2C3E50;
+    height: 50px;
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.chat-header:hover {
+    opacity: .9;
+    transition: .5s;
+}
+
+.chat-header h6{
+    text-align: center;
+    height: 20px;
+    color: white;
+    opacity: .8;
+    margin-top: 10px;
+}
+
+.chat-body{
+    width: 95%;
+    height: 90%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.chat-contact-list{
+    width: 100%;
+    height: 90%;
+    margin-top: 10px;
+    overflow-y: scroll !important;
+}
+
+.chat-contact-list::-webkit-scrollbar {
+    width: 2px;
+    height: 30px;
+}
+
+/* Track */
+.chat-contact-list::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+/* Handle */
+.chat-contact-list::-webkit-scrollbar-thumb {
+    background: rgba(104, 140, 176, 0.9);
+    border-radius: 10px;
+    transition: .5s;
+}
+
+.chat-contact-list-item {
+    width: 90%;
+    height: 70px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
