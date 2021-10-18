@@ -11,6 +11,9 @@ using PontoPlus.Manager.Services.Services;
 using PontoPlus.Manager.Core.Exceptions;
 using PontoPlus.Manager.Services.Filters;
 using System.Data;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace PontoPlus.Controllers
 {
@@ -24,6 +27,18 @@ namespace PontoPlus.Controllers
         {
             _context = context;
             _usuarioServices = usuarioServices;
+        }
+
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            if (HttpContext.Session.GetString("UserId") != null)
+            {
+                int id = int.Parse(HttpContext.Session.GetString("UserId"));
+                var user = _usuarioServices.FindById(id);
+
+                var usersChat = _usuarioServices.FindUsuariosChatByDepartamento(user.Departamentos);
+                TempData["ChatUsers"] = JsonConvert.SerializeObject(usersChat);
+            }
         }
 
         // GET: Usuarios 
