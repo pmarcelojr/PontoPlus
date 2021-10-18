@@ -134,13 +134,10 @@
         </div>
         @* <h2 class="text-center">Ponto+ Eletronico</h2> *@
         @{
-            try
+            if (TempData["ErrorLogin"] != null)
             {
                 var erro = TempData["ErrorLogin"].ToString();
                 <p class="alert alert-danger">@erro</p>
-            }
-            catch
-            {
             }
         }
         <div class="form-group">
@@ -153,13 +150,15 @@
         </div>
         <div class="checkbox">
             <label class="pull-left checkbox-inline" style="margin-right: 100px;">
-                <input type="checkbox" value="" checked> Lembrar-me</label>
+                <input type="checkbox" value="" checked> Lembrar-me
+            </label>
 
             <a asp-action="Forget" class="pull-right">Esqueceu a senha</a>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-lg btn-block">
-                <span class="glyphicon glyphicon-off"></span> Entrar</button>
+                <span class="glyphicon glyphicon-off"></span> Entrar
+            </button>
         </div>
         @* <div class="clearfix" style="margin-left: 50px;">
             <p>Solicitar acesso <a asp-action="Register" class="pull-right"> Cadastre-se</a></p>

@@ -38,6 +38,9 @@ namespace PontoPlus.Manager.Domain.Entities
         public TimeSpan SaidaPm { get; set; }
         public ICollection<RegistroPonto> Pontos { get; set; }
 
+        //Ef Prop
+        public ICollection<UsuarioMensagem> Mensagens { get; private set; }
+
         public Usuario()
         {
         }
@@ -55,7 +58,7 @@ namespace PontoPlus.Manager.Domain.Entities
             SaidaPm = saidaPm;
             _errors = new List<string>();
 
-            Validate();
+            //Validate();
         }
 
         public void AddRegistroPonto(RegistroPonto obj)

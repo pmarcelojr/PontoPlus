@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PontoPlus.Manager.Domain.Entities;
+using PontoPlus.Manager.Infra.Mappings;
 
 namespace PontoPlus.Manager.Infra.Data
 {
@@ -11,5 +12,16 @@ namespace PontoPlus.Manager.Infra.Data
 
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<RegistroPonto> RegistroPontos { get; set; }
+        public virtual DbSet<UsuarioMensagem> UsuarioMensagens { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseMySql(@"Server=localhost;Database=PontoPlus;Uid=root;Pwd=root;");
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new UsuarioMensagemMap());
+        }
     }
 }

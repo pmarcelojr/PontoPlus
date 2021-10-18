@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using PontoPlus.Manager.Domain.Entities;
+using PontoPlus.Manager.Domain.Enums;
 using PontoPlus.Manager.Infra.Data;
 
 namespace PontoPlus.Manager.Services.Services
@@ -46,6 +47,16 @@ namespace PontoPlus.Manager.Services.Services
         public Usuario FindById(int id)
         {
             return _context.Usuarios.FirstOrDefault(obj => obj.Id == id);
+        }
+
+        public List<Usuario> FindUsuariosChatByDepartamento(Departamentos departamento)
+        {
+            if (departamento == Departamentos.RH)
+                return _context.Usuarios.Where(x => x.Departamentos != Departamentos.RH)
+                    .ToList();
+
+            return _context.Usuarios.Where(x => x.Departamentos == Departamentos.RH)
+                    .ToList();
         }
     }
 }

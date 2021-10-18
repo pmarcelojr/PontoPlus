@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using PontoPlus.Manager.Domain.Entities;
 using PontoPlus.Manager.Core.ViewModels;
 using PontoPlus.Manager.Services.Services;
 using PontoPlus.Manager.Services.Filters;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Newtonsoft.Json;
 
 namespace PontoPlus.Controllers
 {
@@ -22,6 +20,18 @@ namespace PontoPlus.Controllers
         {
             _usuarioServices = usuarioServices;
             _registroPontoServices = registroPontoServices;
+        }
+
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            if(HttpContext.Session.GetString("UserId") != null)
+            {
+                int id = int.Parse(HttpContext.Session.GetString("UserId"));
+                var user = _usuarioServices.FindById(id);
+
+                var usersChat = _usuarioServices.FindUsuariosChatByDepartamento(user.Departamentos);
+                TempData["ChatUsers"] = JsonConvert.SerializeObject(usersChat);
+            }
         }
 
         [AutorizacaoFilter]
@@ -86,6 +96,7 @@ namespace PontoPlus.Controllers
                 HttpContext.Session.SetString("UserNome", usuario.Nome);
                 HttpContext.Session.SetString("UserEmail", usuario.Email);
                 HttpContext.Session.SetString("UserDepartamento", usuario.Departamentos.ToString());
+
                 return RedirectToAction(nameof(Index));
             }
             return View();
@@ -94,7 +105,7 @@ namespace PontoPlus.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
-            return RedirectToAction(nameof(Login));
+            return RedirectToAction("Login");
         }
 
         public IActionResult Register()

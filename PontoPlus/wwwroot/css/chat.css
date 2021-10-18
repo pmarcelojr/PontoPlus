@@ -1,0 +1,235 @@
+﻿::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+.chat-box {
+    width: 280px;
+    height: 50px;
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,.3);
+    margin-left: 63%;
+    position: absolute;
+    bottom: 0;
+    background: white;
+    z-index: 1000 !important;
+    border-radius: 10px 10px 0px 0px;
+    transition: .5s;
+}
+
+.chat-open {
+    height: 500px;
+    transition: .5s;
+}
+
+.chat-header {
+    width: 100%;
+    background: #2C3E50;
+    height: 50px;
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.chat-header:hover {
+    opacity: .9;
+    transition: .5s;
+}
+
+.chat-header h6{
+    text-align: center;
+    height: 20px;
+    color: white;
+    opacity: .8;
+    margin-top: 10px;
+}
+
+.chat-body{
+    width: 95%;
+    height: 90%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.chat-contact-list {
+    width: 100%;
+    height: 90%;
+    margin-top: 10px;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+}
+
+.chat-contact-list::-webkit-scrollbar {
+    width: 2px;
+    height: 30px;
+}
+
+.chat-contact-list-item {
+    width: 90%;
+    height: 60px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin-left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.chat-contact-list-item:hover {
+    opacity: .5;
+    transition: .5s;
+}
+
+.chat-contact-list-item p{
+    font-size: 1rem;
+    opacity: .8;
+    font-weight: bold;
+    margin-top: 15px;
+    float: left;
+}
+
+.chat-contact-message {
+    width: 95%;
+    height: 95%;
+    margin-top: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+
+.chat-back-link {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.chat-back-link span{
+    text-align: center;
+    font-weight: bold;
+    color: #2c68a3;
+    cursor: pointer;
+    transition: .5s;
+    margin-bottom: 5px;
+    margin-bottom: 10px !important;
+}
+
+.chat-back-link span:hover{
+    opacity: .5;
+    transition: .5s;
+}
+
+.chat-messages{
+    width: 100%;
+    height: 85%;
+    overflow-y: scroll;
+    overflow-x: hidden !important; 
+}
+
+.chat-input {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-content: center; 
+    align-items: center;
+    margin-top: 5px;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.chat-input-message{
+    flex: .88;
+}
+.chat-input-message input{
+    outline: 0;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,.4);
+    width: 95%;
+}
+
+.chat-input-sender {
+    flex: .18;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-input-sender img{
+    width: 60%;
+    cursor: pointer;
+    opacity: .8;
+    transition: .5s;
+}
+
+.chat-input-sender img:hover{
+    opacity: .5;
+    transition: .5s;
+}
+
+.chat-sender-message {
+    float: left;
+    clear: both;
+    background: #2C3E50;
+    padding: 10px;
+    min-height: 30px;
+    max-width: 50%;
+    height: auto;
+    color: white;
+    border-radius: 5px;
+    font-size: .7rem;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    line-break: loose;
+}
+
+.chat-sender-message p {
+    display: inline;
+    word-break: break-all;
+}
+
+.chat-my-message {
+    display: inline;
+    float: right;
+    clear: both;
+    border: 1px solid rgba(0,0,0,0.2);
+    padding: 10px;
+    max-width: 50%;
+    border-radius: 5px;
+    font-size: .7rem;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    line-break: loose;
+}
+
+.chat-my-message p{
+    display: inline;
+    word-break: break-all;
+}
+
+.chat-sender-message-time{
+    font-size: .6rem;
+    opacity: .7;
+    float: right;
+    transform: translateY(0px);
+}
+
+.chat-my-message-time {
+    font-size: .5rem;
+    opacity: .7;
+    float: left;
+    transform: translateY(0px);
+}
+
+#chat-receiver-container{
+    display: none;
+}
