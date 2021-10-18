@@ -1,17 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PontoPlus.Hubs;
 using PontoPlus.Manager.Infra.Data;
 using PontoPlus.Manager.Services.Services;
+using System;
 
 namespace PontoPlus
 {
@@ -28,7 +25,12 @@ namespace PontoPlus
         public void ConfigureServices(IServiceCollection services)
         {
             var config = Configuration.GetConnectionString("DefaultConnection");
-            
+
+            services.AddSignalR(options =>
+            {
+                options.EnableDetailedErrors = true;
+            });
+
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
 
@@ -42,6 +44,7 @@ namespace PontoPlus
 
             services.AddScoped<SeendingService>();
             services.AddScoped<UsuarioServices>();
+            services.AddScoped<UsuarioMensagemService>();
             services.AddScoped<RegistroPontoServices>();
         }
 
@@ -71,6 +74,8 @@ namespace PontoPlus
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapHub<ChatHub>("/chathub");
             });
         }
     }

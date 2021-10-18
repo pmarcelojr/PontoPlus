@@ -8,7 +8,6 @@ namespace PontoPlus.Manager.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
-            throw new System.NotImplementedException();
         }
     }
 }

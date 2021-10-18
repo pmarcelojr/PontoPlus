@@ -1,108 +1,38 @@
-﻿<section class="chat-box" id="chat">
-    <div class="chat-header" id="chat-header">
-        <h6>
-            <strong>Precisa de ajuda?</strong>
-        </h6>
-    </div>
-    <div class="chat-body">
-        @*<div class="chat-contact-list">
-            <div class="chat-contact-list-item">
-                <p>Lucas Silva</p>
+﻿@if (TempData["ChatUsers"] != null)
+{
+    <section class="chat-box" id="chat">
+        <p id="chat-receiver-container">@HttpContextAccessor.HttpContext.Session.GetString("UserId")</p>
+        <div class="chat-header" id="chat-header">
+            <h6>
+                <strong>Suporte</strong>
+            </h6>
+        </div>
+        <div class="chat-body">
+            <div class="chat-contact-list" id="chat-contacts">
+                @foreach (Usuario usuario in JsonConvert.DeserializeObject<List<Usuario>>(TempData["ChatUsers"].ToString()))
+                {
+                    <div class="chat-contact-list-item" id="user-@usuario.Id">
+                        <p>@usuario.Nome</p>
+                    </div>
+                }
             </div>
-            <div class="chat-contact-list-item">
-                <p>Gabriel Silva</p>
-            </div>
-            <div class="chat-contact-list-item">
-                <p>Pedro Silva</p>
-            </div>
-        </div>*@
 
-        <div class="chat-contact-message">
-            <div class="chat-messages" id="chat-messages">
-                <div class="chat-sender-message">
-                    Salve Caraio
-                    <br />
-                    <span class="chat-sender-message-time">13:44</span>
+            <div class="chat-contact-message" id="chat-messages-box">
+                <div class="chat-back-link">
+                    <span id="chat-back-button">Voltar</span>
                 </div>
-                <div class="chat-my-message">
-                    Salve Mermaozao!
-                    <br />
-                    <span class="chat-my-message-time">13:44</span>
+                <div class="chat-messages" id="chat-messages">
+                    
                 </div>
-                <div class="chat-sender-message">
-                    Salve Caraio
-                    <br />
-                    <span class="chat-sender-message-time">13:44</span>
-                </div>
-                <div class="chat-sender-message">
-                    Salve Caraio
-                    <br />
-                    <span class="chat-sender-message-time">13:44</span>
-                </div>
-                <div class="chat-my-message">
-                    Salve Mermaozao!
-                    <br />
-                    <span class="chat-my-message-time">13:44</span>
-                </div>
-                <div class="chat-sender-message">
-                    Salve Caraio
-                    <br />
-                    <span class="chat-sender-message-time">13:44</span>
-                </div>
-                <div class="chat-sender-message">
-                    Salve Caraio
-                    <br />
-                    <span class="chat-sender-message-time">13:44</span>
-                </div>
-                <div class="chat-my-message">
-                    Salve Mermaozao!
-                    <br />
-                    <span class="chat-my-message-time">13:44</span>
-                </div>
-                <div class="chat-sender-message">
-                    Salve Caraio
-                    <br />
-                    <span class="chat-sender-message-time">13:44</span>
-                </div>
-                <div class="chat-sender-message">
-                    Salve Caraio
-                    <br />
-                    <span class="chat-sender-message-time">13:44</span>
-                </div>
-                <div class="chat-my-message">
-                    Salve Mermaozao!
-                    <br />
-                    <span class="chat-my-message-time">13:44</span>
-                </div>
-                <div class="chat-sender-message">
-                    Salve Caraio
-                    <br />
-                    <span class="chat-sender-message-time">13:44</span>
-                </div>
-                <div class="chat-sender-message">
-                    Salve Caraio
-                    <br />
-                    <span class="chat-sender-message-time">13:44</span>
-                </div>
-                <div class="chat-my-message">
-                    Salve Mermaozao!
-                    <br />
-                    <span class="chat-my-message-time">13:44</span>
-                </div>
-                <div class="chat-sender-message">
-                    Salve Caraio
-                    <br />
-                    <span class="chat-sender-message-time">13:44</span>
-                </div>
-            </div>
-            <div class="chat-input">
-                <div class="chat-input-message">
-                    <input type="text" name="chat-text" />
-                </div>
-                <div class="chat-input-sender">
-                    <img src="~/images/send.png" />
+                <div class="chat-input">
+                    <div class="chat-input-message">
+                        <input type="text" name="chat-input-text" id="chat-input-text" placeholder="Digite sua mensagem..." />
+                    </div>
+                    <div class="chat-input-sender" id="chat-send-button">
+                        <img src="~/images/send.png" />
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+}

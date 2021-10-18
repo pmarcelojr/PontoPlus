@@ -57,11 +57,12 @@
     transform: translateX(-50%);
 }
 
-.chat-contact-list{
+.chat-contact-list {
     width: 100%;
     height: 90%;
     margin-top: 10px;
     overflow-y: scroll !important;
+    overflow-x: hidden !important;
 }
 
 .chat-contact-list::-webkit-scrollbar {
@@ -72,7 +73,7 @@
 .chat-contact-list-item {
     width: 90%;
     height: 60px;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
     margin-left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
@@ -98,22 +99,49 @@
     margin-top: 10px;
     margin-left: 50%;
     transform: translateX(-50%);
+    display: none;
+}
+
+.chat-back-link {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.chat-back-link span{
+    text-align: center;
+    font-weight: bold;
+    color: #2c68a3;
+    cursor: pointer;
+    transition: .5s;
+    margin-bottom: 5px;
+    margin-bottom: 10px !important;
+}
+
+.chat-back-link span:hover{
+    opacity: .5;
+    transition: .5s;
 }
 
 .chat-messages{
     width: 100%;
     height: 85%;
     overflow-y: scroll;
+    overflow-x: hidden !important; 
 }
-
 
 .chat-input {
     width: 100%;
-    height: 15%;
+    height: 10%;
     display: flex;
     align-content: center; 
     align-items: center;
-    border-top: 1px solid rgba(0,0,0,.2);
+    margin-top: 5px;
+    border-top: 1px solid rgba(0,0,0,.1);
 }
 
 .chat-input-message{
@@ -161,9 +189,16 @@
     font-size: .7rem;
     margin-top: 2px;
     margin-bottom: 3px;
+    line-break: loose;
+}
+
+.chat-sender-message p {
+    display: inline;
+    word-break: break-all;
 }
 
 .chat-my-message {
+    display: inline;
     float: right;
     clear: both;
     border: 1px solid rgba(0,0,0,0.2);
@@ -173,6 +208,12 @@
     font-size: .7rem;
     margin-top: 2px;
     margin-bottom: 3px;
+    line-break: loose;
+}
+
+.chat-my-message p{
+    display: inline;
+    word-break: break-all;
 }
 
 .chat-sender-message-time{
@@ -187,4 +228,8 @@
     opacity: .7;
     float: left;
     transform: translateY(0px);
+}
+
+#chat-receiver-container{
+    display: none;
 }
