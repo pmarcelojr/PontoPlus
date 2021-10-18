@@ -55,7 +55,7 @@ namespace PontoPlus.Manager.Domain.Entities
             SaidaPm = saidaPm;
             _errors = new List<string>();
 
-            Validate();
+            //Validate();
         }
 
         public void AddRegistroPonto(RegistroPonto obj)
