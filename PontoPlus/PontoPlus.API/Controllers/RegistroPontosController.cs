@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PontoPlus.Manager.Domain.Entities;
-using PontoPlus.Manager.Services.Services;
-using PontoPlus.Manager.Services.Filters;
+using PontoPlus.PontoPlus.Domain.Entities;
+using PontoPlus.PontoPlus.Services.Services;
+using PontoPlus.PontoPlus.Services.Filters;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace PontoPlus.Controllers
+namespace PontoPlus.PontoPlus.API.Controllers
 {
     public class RegistroPontosController : Controller
     {

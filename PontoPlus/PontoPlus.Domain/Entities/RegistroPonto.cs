@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace PontoPlus.Manager.Domain.Entities
+namespace PontoPlus.PontoPlus.Domain.Entities
 {
     public class RegistroPonto : Base, IEquatable<RegistroPonto>
     {

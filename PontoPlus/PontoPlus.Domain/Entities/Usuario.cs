@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using PontoPlus.Manager.Core.Exceptions;
-using PontoPlus.Manager.Domain.Enums;
-using PontoPlus.Manager.Domain.Validators;
+using PontoPlus.PontoPlus.Core.Exceptions;
+using PontoPlus.PontoPlus.Domain.Enums;
+using PontoPlus.PontoPlus.Domain.Validators;
 
-namespace PontoPlus.Manager.Domain.Entities
+namespace PontoPlus.PontoPlus.Domain.Entities
 {
     public class Usuario : Base, IEqualityComparer<RegistroPonto>
     {

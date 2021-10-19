@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using PontoPlus.Manager.Domain.Entities;
+using PontoPlus.PontoPlus.Domain.Entities;
 
-namespace PontoPlus.Manager.Domain.Validators
+namespace PontoPlus.PontoPlus.Domain.Validators
 {
     public class UsuarioMensagemValidator : AbstractValidator<UsuarioMensagem>
     {
@@ -20,7 +20,7 @@ namespace PontoPlus.Manager.Domain.Validators
 
                 .NotEmpty()
                 .WithMessage("A mensagem não pode ser vazia.")
-                
+
                 .MaximumLength(80)
                 .WithMessage("A mensagem pode ter no máximo 80 caracteres");
         }

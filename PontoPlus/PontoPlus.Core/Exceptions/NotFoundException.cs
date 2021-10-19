@@ -1,6 +1,6 @@
 using System;
 
-namespace PontoPlus.Manager.Core.Exceptions
+namespace PontoPlus.PontoPlus.Core.Exceptions
 {
     public class NotFoundException : ApplicationException
     {

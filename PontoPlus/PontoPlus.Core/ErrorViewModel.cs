@@ -1,6 +1,6 @@
 using System;
 
-namespace PontoPlus.Manager.Core.ViewModels
+namespace PontoPlus.PontoPlus.Core.ViewModels
 {
     public class ErrorViewModel
     {

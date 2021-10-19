@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using PontoPlus.Manager.Domain.Entities;
-using PontoPlus.Manager.Services.Services;
+using PontoPlus.PontoPlus.Domain.Entities;
+using PontoPlus.PontoPlus.Services.Services;
 using System.Threading.Tasks;
 
 namespace PontoPlus.Hubs

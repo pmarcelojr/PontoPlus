@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace PontoPlus.Manager.Core.Exceptions
+namespace PontoPlus.PontoPlus.Core.Exceptions
 {
     public class DomainException : Exception
     {

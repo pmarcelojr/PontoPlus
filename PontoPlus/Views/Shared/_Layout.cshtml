@@ -33,7 +33,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-light" asp-controller="RegistroPontos" asp-action="Index">Espelho de Ponto</a>
                                 </li>
-                                @using PontoPlus.Manager.Services.Filters
+                                @using PontoPlus.PontoPlus.Services.Filters
                                 @{
                                     if (HttpContextAccessor.HttpContext.Session.GetString("UserDepartamento") == "RH")
                                     {

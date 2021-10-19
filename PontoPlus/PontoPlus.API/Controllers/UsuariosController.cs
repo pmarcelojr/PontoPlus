@@ -4,18 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PontoPlus.Manager.Infra.Data;
-using PontoPlus.Manager.Domain.Entities;
-using PontoPlus.Manager.Core.ViewModels;
-using PontoPlus.Manager.Services.Services;
-using PontoPlus.Manager.Core.Exceptions;
-using PontoPlus.Manager.Services.Filters;
+using PontoPlus.PontoPlus.Infra.Data;
+using PontoPlus.PontoPlus.Domain.Entities;
+using PontoPlus.PontoPlus.Core.ViewModels;
+using PontoPlus.PontoPlus.Services.Services;
+using PontoPlus.PontoPlus.Core.Exceptions;
+using PontoPlus.PontoPlus.Services.Filters;
 using System.Data;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace PontoPlus.Controllers
+namespace PontoPlus.PontoPlus.API.Controllers
 {
     [AutorizacaoFilter(Departamento = "RH")]
     public class UsuariosController : Controller

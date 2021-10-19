@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using PontoPlus.Manager.Domain.Entities;
-using PontoPlus.Manager.Infra.Mappings;
+using PontoPlus.PontoPlus.Domain.Entities;
+using PontoPlus.PontoPlus.Infra.Mappings;
 
-namespace PontoPlus.Manager.Infra.Data
+namespace PontoPlus.PontoPlus.Infra.Data
 {
     public class PontoPlusContext : DbContext
     {

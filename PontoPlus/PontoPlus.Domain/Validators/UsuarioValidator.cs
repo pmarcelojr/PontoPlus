@@ -1,7 +1,7 @@
 using FluentValidation;
-using PontoPlus.Manager.Domain.Entities;
+using PontoPlus.PontoPlus.Domain.Entities;
 
-namespace PontoPlus.Manager.Domain.Validators
+namespace PontoPlus.PontoPlus.Domain.Validators
 {
     public class UsuarioValidator : AbstractValidator<Usuario>
     {

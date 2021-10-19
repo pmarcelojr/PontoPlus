@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PontoPlus.Manager.Services.Services;
+using PontoPlus.PontoPlus.Services.Services;
 using System;
 
-namespace PontoPlus.Manager.API.Controllers
+namespace PontoPlus.PontoPlus.API.Controllers
 {
     public class MensagemController : ControllerBase
     {

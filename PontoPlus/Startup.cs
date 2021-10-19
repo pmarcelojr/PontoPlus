@@ -6,8 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PontoPlus.Hubs;
-using PontoPlus.Manager.Infra.Data;
-using PontoPlus.Manager.Services.Services;
+using PontoPlus.PontoPlus.Infra.Data;
+using PontoPlus.PontoPlus.Services.Services;
 using System;
 
 namespace PontoPlus

@@ -1,4 +1,4 @@
-@model PontoPlus.Manager.Domain.Entities.Usuario
+@model PontoPlus.PontoPlus.Domain.Entities.Usuario
 
 @{
     ViewData["Title"] = "Editar Funcionário";
@@ -43,7 +43,7 @@
                                 <label asp-for="Departamentos" class="col-sm-4 col-form-label">Departamento</label>
                                 <div class="col-sm-8">
                                     <select asp-for="Departamentos"
-                                    asp-items="@(Html.GetEnumSelectList<PontoPlus.Manager.Domain.Enums.Departamentos>())"
+                                    asp-items="@(Html.GetEnumSelectList<PontoPlus.PontoPlus.Domain.Enums.Departamentos>())"
                                     class="form-control"></select>
                                     <span asp-validation-for="Departamentos" class="text-danger"></span>
                                 </div>

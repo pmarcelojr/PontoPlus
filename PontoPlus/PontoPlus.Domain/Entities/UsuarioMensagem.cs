@@ -1,8 +1,8 @@
-﻿using PontoPlus.Manager.Core.Exceptions;
-using PontoPlus.Manager.Domain.Validators;
+﻿using PontoPlus.PontoPlus.Core.Exceptions;
+using PontoPlus.PontoPlus.Domain.Validators;
 using System;
 
-namespace PontoPlus.Manager.Domain.Entities
+namespace PontoPlus.PontoPlus.Domain.Entities
 {
     public class UsuarioMensagem : Base
     {

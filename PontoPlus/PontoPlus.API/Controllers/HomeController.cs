@@ -2,14 +2,14 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PontoPlus.Manager.Domain.Entities;
-using PontoPlus.Manager.Core.ViewModels;
-using PontoPlus.Manager.Services.Services;
-using PontoPlus.Manager.Services.Filters;
+using PontoPlus.PontoPlus.Domain.Entities;
+using PontoPlus.PontoPlus.Core.ViewModels;
+using PontoPlus.PontoPlus.Services.Services;
+using PontoPlus.PontoPlus.Services.Filters;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
 
-namespace PontoPlus.Controllers
+namespace PontoPlus.PontoPlus.API.Controllers
 {
     public class HomeController : Controller
     {
@@ -24,7 +24,7 @@ namespace PontoPlus.Controllers
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            if(HttpContext.Session.GetString("UserId") != null)
+            if (HttpContext.Session.GetString("UserId") != null)
             {
                 int id = int.Parse(HttpContext.Session.GetString("UserId"));
                 var user = _usuarioServices.FindById(id);

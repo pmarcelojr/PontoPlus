@@ -1,9 +1,9 @@
-﻿using PontoPlus.Manager.Domain.Entities;
-using PontoPlus.Manager.Infra.Data;
+﻿using PontoPlus.PontoPlus.Domain.Entities;
+using PontoPlus.PontoPlus.Infra.Data;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PontoPlus.Manager.Services.Services
+namespace PontoPlus.PontoPlus.Services.Services
 {
     public class UsuarioMensagemService
     {

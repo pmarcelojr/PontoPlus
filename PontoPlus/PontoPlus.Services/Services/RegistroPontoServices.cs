@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using PontoPlus.Manager.Domain.Entities;
-using PontoPlus.Manager.Infra.Data;
+using PontoPlus.PontoPlus.Domain.Entities;
+using PontoPlus.PontoPlus.Infra.Data;
 
-namespace PontoPlus.Manager.Services.Services
+namespace PontoPlus.PontoPlus.Services.Services
 {
     public class RegistroPontoServices
     {

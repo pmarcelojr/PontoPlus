@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace PontoPlus.Manager.Domain.Entities
+namespace PontoPlus.PontoPlus.Domain.Entities
 {
     public abstract class Base
     {

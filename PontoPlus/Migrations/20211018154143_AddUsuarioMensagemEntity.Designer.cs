@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PontoPlus.Manager.Infra.Data;
+using PontoPlus.PontoPlus.Infra.Data;
 
 namespace PontoPlus.Migrations
 {

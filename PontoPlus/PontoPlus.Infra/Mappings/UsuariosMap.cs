@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PontoPlus.Manager.Domain.Entities;
+using PontoPlus.PontoPlus.Domain.Entities;
 
-namespace PontoPlus.Manager.Infra.Mappings
+namespace PontoPlus.PontoPlus.Infra.Mappings
 {
     public class UsuariosMap : IEntityTypeConfiguration<Usuario>
     {
