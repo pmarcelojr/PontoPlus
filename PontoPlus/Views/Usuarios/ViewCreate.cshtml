@@ -4,6 +4,15 @@
     ViewData["Title"] = "Novo Funcionário";
 }
 
+@section Css{
+<style>
+    * {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+</style>
+}
+
 <div class="modal-dialog">
     <div class="modal-content">
         @using (Html.BeginForm("Create", "Usuarios", FormMethod.Post))
@@ -78,7 +87,8 @@
             </div>
             <div class="modal-footer">
                 <input type="submit" value="Criar" class="btn btn-success" />
-                <button type="button" class="btn btn-info"><a style="color: white;" asp-action="Index">Voltar</a></button>
+                <button type="button" class="btn btn-info"><a style="color: white; text-decoration: none"
+                    asp-action="Index">Voltar</a></button>
             </div>
         }
     </div>
