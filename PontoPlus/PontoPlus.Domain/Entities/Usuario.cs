@@ -50,7 +50,7 @@ namespace PontoPlus.PontoPlus.Domain.Entities
             Id = id;
             Nome = nome;
             Email = email;
-            Senha = senha;
+            Senha = BCrypt.Net.BCrypt.HashPassword(senha);
             Departamentos = departamentos;
             EntradaAm = entradaAm;
             SaidaAm = saidaAm;
