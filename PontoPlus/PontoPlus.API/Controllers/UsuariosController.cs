@@ -92,24 +92,20 @@ namespace PontoPlus.PontoPlus.API.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    //_usuarioServices.Insert(usuario);
-                    _context.Add(usuario);
+                    _usuarioServices.Insert(usuario);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
                 else
                 {
                     Console.WriteLine("Falso");
+                    throw new Exception("ModelState não é válido");
                 }
             }
-            catch (DataException)
+            catch (DataException e)
             {
-                //_usuarioServices.Insert(usuario);
-                _context.Add(usuario);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                throw new Exception("Ocorreu um erro fatal ao criar usuário: " + e.Message);
             }
-            return View(usuario);
         }
 
         // GET: usuarios/edit/{id}
