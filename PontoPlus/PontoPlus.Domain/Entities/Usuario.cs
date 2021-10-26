@@ -61,6 +61,10 @@ namespace PontoPlus.PontoPlus.Domain.Entities
             //Validate();
         }
 
+        public static string criptografar(string senha) {
+            return BCrypt.Net.BCrypt.HashPassword(senha);
+        }
+
         public void AddRegistroPonto(RegistroPonto obj)
         {
             Pontos.Add(obj);
