@@ -33,8 +33,7 @@ namespace PontoPlus.PontoPlus.Services.Services
 
             MailboxAddress to = new MailboxAddress(encontrado.Nome, destinatario);
 
-            BodyBuilder bodyBuilder = new BodyBuilder();
-            bodyBuilder.HtmlBody = @"<p>Olá,<br>
+            string template = @$"<p>Olá, {encontrado.Nome}!<br>
             <br>
             Foi solicitada a redefinição de senha de acesso ao sistema PontoPlus para este endereço de e-mail.<br>
             <br>
@@ -47,6 +46,9 @@ namespace PontoPlus.PontoPlus.Services.Services
             <br>
             <a href=""https://facebook.com/leandroudala"">Clique aqui para redefinir sua senha</a>
             </p>";
+
+            BodyBuilder bodyBuilder = new BodyBuilder();
+            bodyBuilder.HtmlBody = template;
 
             bodyBuilder.TextBody = "Olá, Foi solicitada a redefinição de senha de acesso ao sistema PontoPlus para este endereço de e-mail.";
 
