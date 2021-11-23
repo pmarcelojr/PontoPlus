@@ -14,6 +14,7 @@ using System.Data;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Logging;
 
 namespace PontoPlus.PontoPlus.API.Controllers
 {
@@ -23,10 +24,13 @@ namespace PontoPlus.PontoPlus.API.Controllers
         private readonly PontoPlusContext _context;
         private readonly UsuarioServices _usuarioServices;
 
-        public UsuariosController(PontoPlusContext context, UsuarioServices usuarioServices)
+        private readonly ILogger _logger;
+
+        public UsuariosController(PontoPlusContext context, UsuarioServices usuarioServices, ILogger<UsuariosController> logger)
         {
             _context = context;
             _usuarioServices = usuarioServices;
+            _logger = logger;
         }
 
         public override void OnActionExecuting(ActionExecutingContext context)
@@ -92,24 +96,20 @@ namespace PontoPlus.PontoPlus.API.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    //_usuarioServices.Insert(usuario);
-                    _context.Add(usuario);
+                    _usuarioServices.Insert(usuario);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
                 else
                 {
                     Console.WriteLine("Falso");
+                    throw new Exception("ModelState não é válido");
                 }
             }
-            catch (DataException)
+            catch (DataException e)
             {
-                //_usuarioServices.Insert(usuario);
-                _context.Add(usuario);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                throw new Exception("Ocorreu um erro fatal ao criar usuário: " + e.Message);
             }
-            return View(usuario);
         }
 
         // GET: usuarios/edit/{id}
@@ -132,16 +132,27 @@ namespace PontoPlus.PontoPlus.API.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Email,Senha,Departamentos,EntradaAm,SaidaAm,EntradaPm,SaidaPm")] Usuario usuario)
         {
+            _logger.LogInformation("usuario.ID: " + usuario.Id);
+            _logger.LogInformation("ID: " + id);
+            var local = _context.Set<Usuario>()
+            .Local.FirstOrDefault(entry => entry.Id.Equals(id));
+            
             if (id != usuario.Id)
             {
                 return NotFound();
+            }
+
+            if (local != null)
+            {
+                _context.Entry(local).State = EntityState.Detached;
             }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(usuario);
+                    usuario.Senha = Usuario.criptografar(usuario.Senha);
+                    _context.Usuarios.Update(usuario);
                     await _context.SaveChangesAsync();
                 }
                 catch (NotFoundException e)

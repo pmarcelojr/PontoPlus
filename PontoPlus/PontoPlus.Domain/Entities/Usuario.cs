@@ -50,7 +50,7 @@ namespace PontoPlus.PontoPlus.Domain.Entities
             Id = id;
             Nome = nome;
             Email = email;
-            Senha = senha;
+            Senha = BCrypt.Net.BCrypt.HashPassword(senha);
             Departamentos = departamentos;
             EntradaAm = entradaAm;
             SaidaAm = saidaAm;
@@ -59,6 +59,10 @@ namespace PontoPlus.PontoPlus.Domain.Entities
             _errors = new List<string>();
 
             //Validate();
+        }
+
+        public static string criptografar(string senha) {
+            return BCrypt.Net.BCrypt.HashPassword(senha);
         }
 
         public void AddRegistroPonto(RegistroPonto obj)

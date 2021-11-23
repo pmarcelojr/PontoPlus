@@ -63,9 +63,22 @@ dotnet run
 ```
 
 ### 4.1. Iniciar com watch
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/uMelhorias
 ```
 dotnet watch run
+```
+
+# 5. Testar disparo de e-mail
+O sistema irá retornar uma mensagem com status 200 se o usuário estiver cadastrado, ou 400 caso o endereço de e-mail não tenha sido encontrado.
+
+A hamada para o endpoint deve ser do tipo POST.
+
+Exemplo de requisição via CURL:
+```
+curl -i -k -X post https://localhost:5001/api/email/redefinir-senha?para=usuario.cadastrado@gmail.com
 ```
 
 ## Contributing
