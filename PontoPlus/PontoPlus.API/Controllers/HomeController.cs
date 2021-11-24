@@ -102,6 +102,9 @@ namespace PontoPlus.PontoPlus.API.Controllers
             return View();
         }
 
+        public IActionResult SenhaEnviada() {
+            return View();
+        }
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
