@@ -124,8 +124,53 @@
 </style>
 }
 
+@section scripts {
+<script language="JavaScript">
+function estaEnviando(enviando) {
+    const btnEnviar = document.getElementById('btnEnviar');
+    if (enviando === undefined) {
+        enviando = false;
+    }
+
+    let textoEnviando = 'Disparando e-mail';
+    if (!enviando) {
+        textoEnviando = 'Enviar';
+    }
+
+    btnEnviar.innerHTML = textoEnviando;
+    btnEnviar.disabled = enviando;
+    document.getElementById('Email').disabled = enviando;
+}
+function solicitarRedefinicaoSenha() {
+    const labelErro = document.getElementById('labelErro');
+    const txtEmail = document.getElementById('Email');
+    
+    const email = txtEmail.value;
+
+    labelErro.innerHTML = '';
+    
+    estaEnviando(true);
+    fetch('/api/email/redefinir-senha?para=' + email, { method: 'POST' })
+    .then(res => {
+        if (res.status === 200) {
+            window.location = '/Home/SenhaEnviada?email=' + email;
+            return;
+        }
+
+        labelErro.innerHTML = 'Este e-mail não está vinculado a nenhum usuário.';
+    }).catch(err => {
+        labelErro.innerHTML = 'Ocorreu um erro desconhecido ao verificar o e-mail. Por favor, tente novamente mais tarde.';
+    }).finally(() => {
+        estaEnviando(false);
+    });
+
+    return false;
+}
+</script>
+}
+
 <div class="login-form">
-    <form asp-controller="Home" asp-action="Login" method="post">
+    <form onsubmit="return solicitarRedefinicaoSenha()">
         <div class="avatar">
             <img src="/images/avatar.png" alt="Avatar">
         </div>
@@ -149,11 +194,12 @@
         </div>
         <div class="form-group">
             <input type="email" class="form-control" asp-for="Email" placeholder="Email">
-            <span asp-validation-for="Email" class="text-danger"></span>
+            <span asp-validation-for="Email" class="text-danger" id="labelErro"></span>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg btn-block">
-                <span class="glyphicon glyphicon-off"></span> Enviar</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="btnEnviar">
+                <span class="glyphicon glyphicon-off"></span> Enviar
+            </button>
         </div>
     </form>
 </div>
