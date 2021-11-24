@@ -6,14 +6,13 @@ namespace PontoPlus.PontoPlus.API.Controllers
 {
     public class EmailController : ControllerBase
     {
-        private readonly EmailService _emailService;
 
         private readonly PontoPlusContext _context;
-
-        public EmailController(PontoPlusContext context)
+        private readonly EmailService _emailService;
+        public EmailController(PontoPlusContext context, EmailService emailService)
         {
             _context = context;
-            _emailService = new EmailService(_context);
+            _emailService = emailService;
         }
 
         [HttpPost]

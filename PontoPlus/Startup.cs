@@ -46,6 +46,8 @@ namespace PontoPlus
             services.AddScoped<UsuarioServices>();
             services.AddScoped<UsuarioMensagemService>();
             services.AddScoped<RegistroPontoServices>();
+            services.AddScoped<SenhaService>();
+            services.AddScoped<EmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

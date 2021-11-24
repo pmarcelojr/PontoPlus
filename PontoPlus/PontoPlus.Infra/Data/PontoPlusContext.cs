@@ -14,6 +14,8 @@ namespace PontoPlus.PontoPlus.Infra.Data
         public virtual DbSet<RegistroPonto> RegistroPontos { get; set; }
         public virtual DbSet<UsuarioMensagem> UsuarioMensagens { get; set; }
 
+        public virtual DbSet<SenhaToken> SenhaTokens { get; set; }
+
         // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         // {
         //     optionsBuilder.UseMySql(@"Server=localhost;Database=PontoPlus;Uid=root;Pwd=root;");

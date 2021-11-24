@@ -1,0 +1,179 @@
+@{
+    ViewData["Title"] = "Redefinição de Senha - Ponto Plus";
+    string token = Context.Request.Query["token"];
+}
+
+@section Css{
+<style type="text/css">
+    body {}
+
+    .form-control {
+        min-height: 41px;
+        background: #fff;
+        box-shadow: none im !important;
+        border-color: #E3E3E3;
+    }
+
+    .form-control:focus {
+        border-color: #70C5C0;
+    }
+
+    .form-control,
+    .btn {
+        border-radius: 10px;
+    }
+
+    .login-form {
+        width: 350px;
+        margin: 0 auto;
+        padding: 100px 0 30px;
+    }
+
+    .login-form form {
+        color: #7A7A7A;
+        border-radius: 2px;
+        margin-bottom: 15px;
+        font-size: 13px;
+        background: #ECECEC;
+        box-shadow: 0px 2px 2px rgb(0, 0, 0, 0.3);
+        padding: 30px;
+        position: relative;
+    }
+
+    .login-form h2 {
+        font-size: 22px;
+        margin: 35px 0 25px;
+    }
+
+    .login-form .avatar {
+        position: absolute;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top: -50px;
+        width: 95px;
+        height: 95px;
+        border-radius: 50%;
+        z-index: 9;
+        @*background:#70C5C0;*@@*background:#2fa4e7;*@background: #2C3E50;
+        padding: 15px;
+        box-shadow: 0px 2px 2px rgb(0, 0, 0, 0.1);
+    }
+
+    .login-form .logo {
+        margin: 0 auto;
+        padding-bottom: 0;
+        padding-top: 15px;
+        width: 130px;
+        height: 100px;
+    }
+
+    .login-form img {
+        width: 100%;
+    }
+
+    .login-form input[type="checkbox"] {
+        margin-top: 2px;
+    }
+
+    .login-form .btn {
+        font-size: 16px;
+        font-weight: bold;
+        @*background:#70C5C0;*@@*background:#2fa4e7;*@background: #2C3E50;
+        border: none;
+        margin-bottom: 20px;
+    }
+
+    .login-form .btn:hover,
+    .login-form .btn:focus {
+        @*background:#50B8B3;*@background: #157ab5;
+        outline: none !important;
+    }
+
+    .login-form .name {
+        font-size: 16px;
+        font-weight: bold;
+        @*background:#70C5C0;*@@*background:#2fa4e7;*@background: #2C3E50;
+        border: none;
+        margin-bottom: 20px;
+    }
+
+    .login-form .name:hover,
+    .login-form .name:focus {
+        @*background:#50B8B3;*@background: #157ab5;
+        outline: none !important;
+    }
+
+    .login-form a {
+        text-decoration: underline;
+    }
+
+    .login-form a:hover {
+        text-decoration: none;
+    }
+
+    .login-form form a {
+        @*color:#7A7A7A;*@@*color:#2fa4e7;*@color: #2C3E50;
+        text-decoration: none;
+    }
+
+    .login-form form a:hover {
+        text-decoration: underline;
+    }
+</style>
+}
+
+@section scripts {
+<script language="JavaScript">
+    function enviarFormulario() {
+        const senha = document.getElementById('Senha').value;
+        const token = document.getElementById('Token').value;
+        const body = JSON.stringify({ senha, token });
+
+        fetch('/api/senha/atualizar', {
+            method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body
+        }).then(res => {
+            if (res.status === 200) {
+                window.location = "/";
+                return;
+            }
+        });
+
+        return false;
+    }
+</script>
+}
+
+<div class="login-form">
+    <form onsubmit="return enviarFormulario()">
+        <input type="hidden" name="Token" id="Token" value="@(token)">
+        <div class="avatar">
+            <img src="/images/avatar.png" alt="Avatar">
+        </div>
+        <div class="logo">
+            <img src="/images/logo1.png" alt="logotipo">
+        </div>
+        <div>
+            <h4 style="text-align: center;">Redefinição de Senha</h4>
+            <p>Utilize o formulário abaixo para redefinir sua senha.</p>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="Senha" placeholder="Senha" />
+            <span id="ErroSenha" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Confirmar Senha" />
+            <span id="ErroConfirmarSenha" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                <span class="glyphicon glyphicon-off"></span> Redefinir senha
+            </button>
+        </div>
+    </form>
+</div>
