@@ -43,7 +43,8 @@ namespace PontoPlus.PontoPlus.Services.Services
         public void Insert(Usuario obj)
         {
             // verificando se usuário existe
-            if (_context.Usuarios.Any(x => x.Email == obj.Email)) {
+            if (_context.Usuarios.Any(x => x.Email == obj.Email))
+            {
                 throw new System.Exception("O e-mail '" + obj.Email + "' já está sendo utilizado");
             }
 
