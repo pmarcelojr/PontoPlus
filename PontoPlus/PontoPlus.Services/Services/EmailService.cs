@@ -3,7 +3,6 @@ using MimeKit;
 
 using System.Linq;
 using PontoPlus.PontoPlus.Domain.Entities;
-using PontoPlus.PontoPlus.Domain.Enums;
 using PontoPlus.PontoPlus.Infra.Data;
 
 namespace PontoPlus.PontoPlus.Services.Services
@@ -11,9 +10,11 @@ namespace PontoPlus.PontoPlus.Services.Services
     public class EmailService
     {
         private readonly PontoPlusContext _context;
-        
-        public EmailService(PontoPlusContext context) {
+        private readonly SenhaService _senhaService;
+        public EmailService(PontoPlusContext context, SenhaService senhaService)
+        {
             _context = context;
+            _senhaService = senhaService;
         }
         
         public bool RedefinirSenha(string destinatario)
@@ -28,6 +29,7 @@ namespace PontoPlus.PontoPlus.Services.Services
                 return false;
             }
 
+            SenhaToken senhaToken = _senhaService.GerarToken(destinatario);
 
             MailboxAddress from = new MailboxAddress("PontoPlus", "leandroudala@gmail.com");
 
@@ -44,7 +46,9 @@ namespace PontoPlus.PontoPlus.Services.Services
             <br>
             Nossa equipe nunca pedirá suas senhas de acesso e/ou redirecionamento de e-mails disparados pelo próprio sistema.<br>
             <br>
-            <a href=""https://facebook.com/leandroudala"">Clique aqui para redefinir sua senha</a>
+            <a href=""https://localhost:5001/Senha/NovaSenha?token={senhaToken.Token}"">Clique aqui para redefinir sua senha</a><br>
+            <br>
+            Observação: O link acima tem a validade de <strong>30 minutos</strong>.
             </p>";
 
             BodyBuilder bodyBuilder = new BodyBuilder();

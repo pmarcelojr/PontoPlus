@@ -61,6 +61,11 @@ namespace PontoPlus.PontoPlus.Domain.Entities
             //Validate();
         }
 
+        public void AtualizarSenha(string novaSenha)
+        {
+            Senha = BCrypt.Net.BCrypt.HashPassword(novaSenha);
+        }
+
         public static string criptografar(string senha) {
             return BCrypt.Net.BCrypt.HashPassword(senha);
         }

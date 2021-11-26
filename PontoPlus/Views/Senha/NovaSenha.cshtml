@@ -1,7 +1,6 @@
-@model PontoPlus.PontoPlus.Domain.Entities.Usuario
-
 @{
-    ViewData["Title"] = "Recuperar minha senha";
+    ViewData["Title"] = "Redefinição de Senha - Ponto Plus";
+    string token = Context.Request.Query["token"];
 }
 
 @section Css{
@@ -126,79 +125,54 @@
 
 @section scripts {
 <script language="JavaScript">
-function estaEnviando(enviando) {
-    const btnEnviar = document.getElementById('btnEnviar');
-    if (enviando === undefined) {
-        enviando = false;
+    function enviarFormulario() {
+        const senha = document.getElementById('Senha').value;
+        const token = document.getElementById('Token').value;
+        const body = JSON.stringify({ senha, token });
+
+        fetch('/api/senha/atualizar', {
+            method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body
+        }).then(res => {
+            if (res.status === 200) {
+                window.location = "/";
+                return;
+            }
+        });
+
+        return false;
     }
-
-    let textoEnviando = 'Disparando e-mail';
-    if (!enviando) {
-        textoEnviando = 'Enviar';
-    }
-
-    btnEnviar.innerHTML = textoEnviando;
-    btnEnviar.disabled = enviando;
-    document.getElementById('Email').disabled = enviando;
-}
-function solicitarRedefinicaoSenha() {
-    const labelErro = document.getElementById('labelErro');
-    const txtEmail = document.getElementById('Email');
-    
-    const email = txtEmail.value;
-
-    labelErro.innerHTML = '';
-    
-    estaEnviando(true);
-    fetch('/api/email/redefinir-senha?para=' + email, { method: 'POST' })
-    .then(res => {
-        if (res.status === 200) {
-            window.location = '/Home/SenhaEnviada?email=' + email;
-            return;
-        }
-
-        labelErro.innerHTML = 'Este e-mail não está vinculado a nenhum usuário.';
-    }).catch(err => {
-        labelErro.innerHTML = 'Ocorreu um erro desconhecido ao verificar o e-mail. Por favor, tente novamente mais tarde.';
-    }).finally(() => {
-        estaEnviando(false);
-    });
-
-    return false;
-}
 </script>
 }
 
 <div class="login-form">
-    <form onsubmit="return solicitarRedefinicaoSenha()">
+    <form onsubmit="return enviarFormulario()">
+        <input type="hidden" name="Token" id="Token" value="@(token)">
         <div class="avatar">
             <img src="/images/avatar.png" alt="Avatar">
         </div>
         <div class="logo">
             <img src="/images/logo1.png" alt="logotipo">
         </div>
-        @* <h2 class="text-center">Ponto+ Eletronico</h2> *@
-        @{
-            try
-            {
-                var erro = TempData["ErrorLogin"].ToString();
-                <p class="alert alert-danger">@erro</p>
-            }
-            catch
-            {
-            }
-        }
         <div>
-            <h4 style="text-align: center;">Esqueceu a senha?</h4>
-            <p>Não tem problema! Só precisamos do email que você usou ao criar seu cadastro.</p>
+            <h4 style="text-align: center;">Redefinição de Senha</h4>
+            <p>Utilize o formulário abaixo para redefinir sua senha.</p>
         </div>
         <div class="form-group">
-            <input type="email" class="form-control" asp-for="Email" placeholder="Email">
-            <span asp-validation-for="Email" class="text-danger" id="labelErro"></span>
+            <input type="password" class="form-control" id="Senha" placeholder="Senha" />
+            <span id="ErroSenha" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg btn-block" id="btnEnviar">
-                <span class="glyphicon glyphicon-off"></span> Enviar
+            <input type="password" class="form-control" placeholder="Confirmar Senha" />
+            <span id="ErroConfirmarSenha" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                <span class="glyphicon glyphicon-off"></span> Redefinir senha
             </button>
         </div>
     </form>

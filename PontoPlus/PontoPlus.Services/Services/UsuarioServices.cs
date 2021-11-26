@@ -56,6 +56,21 @@ namespace PontoPlus.PontoPlus.Services.Services
             _context.SaveChanges();
         }
 
+        internal bool AtualizarSenha(string email, string senha)
+        {
+            Usuario usuario = _context.Usuarios.FirstOrDefault(o => o.Email == email);
+
+            if (usuario == null)
+            {
+                return false;
+            }
+
+            usuario.AtualizarSenha(senha);
+            _context.Usuarios.Update(usuario);
+            _context.SaveChanges();
+            return true;
+        }
+
         public List<Usuario> FindAll()
         {
             return _context.Usuarios.Include(obj => obj.Pontos).ToList();
