@@ -17,7 +17,7 @@ namespace PontoPlus.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.4");
 
-            modelBuilder.Entity("PontoPlus.Manager.Domain.Entities.RegistroPonto", b =>
+            modelBuilder.Entity("PontoPlus.PontoPlus.Domain.Entities.RegistroPonto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,7 @@ namespace PontoPlus.Migrations
                     b.ToTable("RegistroPontos");
                 });
 
-            modelBuilder.Entity("PontoPlus.Manager.Domain.Entities.Usuario", b =>
+            modelBuilder.Entity("PontoPlus.PontoPlus.Domain.Entities.Usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -77,7 +77,7 @@ namespace PontoPlus.Migrations
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("PontoPlus.Manager.Domain.Entities.UsuarioMensagem", b =>
+            modelBuilder.Entity("PontoPlus.PontoPlus.Domain.Entities.UsuarioMensagem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -105,9 +105,9 @@ namespace PontoPlus.Migrations
                     b.ToTable("UsuarioMensagens");
                 });
 
-            modelBuilder.Entity("PontoPlus.Manager.Domain.Entities.RegistroPonto", b =>
+            modelBuilder.Entity("PontoPlus.PontoPlus.Domain.Entities.RegistroPonto", b =>
                 {
-                    b.HasOne("PontoPlus.Manager.Domain.Entities.Usuario", "Usuario")
+                    b.HasOne("PontoPlus.PontoPlus.Domain.Entities.Usuario", "Usuario")
                         .WithMany("Pontos")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -116,9 +116,9 @@ namespace PontoPlus.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("PontoPlus.Manager.Domain.Entities.UsuarioMensagem", b =>
+            modelBuilder.Entity("PontoPlus.PontoPlus.Domain.Entities.UsuarioMensagem", b =>
                 {
-                    b.HasOne("PontoPlus.Manager.Domain.Entities.Usuario", "Usuario")
+                    b.HasOne("PontoPlus.PontoPlus.Domain.Entities.Usuario", "Usuario")
                         .WithMany("Mensagens")
                         .HasForeignKey("ReceiverId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -127,7 +127,7 @@ namespace PontoPlus.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("PontoPlus.Manager.Domain.Entities.Usuario", b =>
+            modelBuilder.Entity("PontoPlus.PontoPlus.Domain.Entities.Usuario", b =>
                 {
                     b.Navigation("Mensagens");
 
